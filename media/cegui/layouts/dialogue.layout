@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="DialogueRoot" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="Active" value="true" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="Generic/Image" name="BotBar" >
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{0.15,0}}" />
+            <Property name="Active" value="true" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Property name="AspectRatio" value="13.714" />
+            <Property name="VerticalAlignment" value="Bottom" />
+            <Property name="MousePassThroughEnabled" value="true" />
+            <Window type="Generic/Image" name="ImagePhoto1" >
+                <Property name="Area" value="{{-0.3,0},{0.1,0},{-0.25,0},{-0.1,0}}" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="AspectMode" value="Expand" />
+                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="HorizontalAlignment" value="Centre" />
+                <Property name="MousePassThroughEnabled" value="true" />
+            </Window>
+            <Window type="Generic/Image" name="ImagePhoto2" >
+                <Property name="Area" value="{{-0.3,0},{0.1,0},{-0.25,0},{-0.1,0}}" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="AspectMode" value="Expand" />
+                <Property name="VerticalAlignment" value="Centre" />
+                <Property name="HorizontalAlignment" value="Centre" />
+                <Property name="MousePassThroughEnabled" value="true" />
+            </Window>
+            <Window type="Generic/Label" name="NameLabel" >
+                <Property name="Area" value="{{0,0},{0.4,0},{0.15,0},{0.87,0}}" />
+                <Property name="Font" value="Jura-18" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="HorzFormatting" value="RightAligned" />
+                <Property name="NormalTextColour" value="FFFFFFFF" />
+            </Window>
+            <Window type="Generic/Label" name="BotBarLabel" >
+                <Property name="Area" value="{{0,0},{0.4,0},{1,0},{0.87,0}}" />
+                <Property name="Font" value="Jura-18" />
+                <Property name="Active" value="true" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="NormalTextColour" value="FFFFFFFF" />
+            </Window>
+        </Window>
+    </Window>
+</GUILayout>

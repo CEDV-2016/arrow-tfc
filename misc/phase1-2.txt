@@ -1,0 +1,3 @@
+1:Gr. Geralt:Well done! But we have detected a signal coming from another part of this planet.
+1:Gr. Geralt: We send you to the North Pole
+2:Denna:Got it!

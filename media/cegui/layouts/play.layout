@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="HorizontalLayoutContainer" name="HorizontalLayoutContainer" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{0.1,0}}" />
+        <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="Vanilla/FrameWindow" name="FrameWindow" >
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{0.1,0}}" />
+            <Property name="TitlebarEnabled" value="false" />
+            <Property name="DragMovingEnabled" value="false" />
+            <Property name="CloseButtonEnabled" value="false" />
+            <AutoWindow namePath="__auto_titlebar__" >
+                <Property name="DraggingEnabled" value="false" />
+            </AutoWindow>
+        </Window>
+    </Window>
+</GUILayout>
