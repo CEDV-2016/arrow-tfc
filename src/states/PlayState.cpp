@@ -2,6 +2,7 @@
 #include "PauseState.hpp"
 #include "EndState.hpp"
 #include "SoundFXManager.hpp"
+#include "Enemy.hpp"
 
 #include <OgreBulletDynamicsRigidBody.h>
 #include <Shapes/OgreBulletCollisionsStaticPlaneShape.h>
@@ -38,6 +39,7 @@ PlayState::enter ()
   _shootManager = ShootManager::getSingletonPtr();
   _collisionManager = MyCollisionManager::getSingletonPtr();
   _characterManager = CharacterManager::getSingletonPtr();
+  _enemyManager = EnemyManager::getSingletonPtr();
 
   _sceneMgr->clearScene(); //deleting background image
   Ogre::Camera* cam = _sceneMgr->getCamera("MainCamera");
@@ -51,6 +53,7 @@ PlayState::enter ()
 
   _camManager->initCamera();
   _shootManager->initWorld();
+  _enemyManager->createEnemy(1);
 
   _exitGame = false;
 }

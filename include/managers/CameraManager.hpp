@@ -9,6 +9,9 @@ class CameraManager : public Ogre::Singleton<CameraManager>
 public:
   CameraManager( Ogre::SceneManager * sceneMgr );
 
+  static CameraManager& getSingleton ();
+  static CameraManager* getSingletonPtr ();
+
   void keyPressed (const OIS::KeyEvent &e);
   void keyReleased (const OIS::KeyEvent &e);
 
@@ -16,10 +19,6 @@ public:
 
   void initCamera();
   void moveCamera(Ogre::Real deltaT);
-
-  // Inherited from Ogre::Singleton.
-  static CameraManager& getSingleton ();
-  static CameraManager* getSingletonPtr ();
 
 private:
   Ogre::SceneManager* _sceneMgr;

@@ -16,6 +16,7 @@
 #include "MyCollisionManager.hpp"
 #include "CharacterManager.hpp"
 #include "DialogManager.hpp"
+#include "EnemyManager.hpp"
 
 #include "GameState.hpp"
 
@@ -72,6 +73,7 @@ class IntroState : public Ogre::Singleton<IntroState>, public GameState
   MyCollisionManager* _collisionMgr;
   CharacterManager* _characterMgr;
   DialogManager* _dialogueMgr;
+  EnemyManager* _enemyMgr;
 
   bool _exitGame;
 };

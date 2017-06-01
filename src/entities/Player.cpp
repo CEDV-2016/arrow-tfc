@@ -15,11 +15,11 @@ Player::~Player() {
 
 void Player::initComponents () {
     std::shared_ptr<NodeComponent> nodeComponent;
-    nodeComponent = std::make_shared<NodeComponent>(shared_from_this(), "Player", 1);
+    nodeComponent = std::make_shared<NodeComponent>(shared_from_this(), "Arrow", 1);
 
     std::shared_ptr<PhysicsComponent> physicsComponent =
         std::make_shared<PhysicsComponent>(shared_from_this(), nodeComponent->getNode(),
-        nodeComponent->getEntity(), std::string("Player"), PhysicsComponent::Type::PLAYER,
+        nodeComponent->getEntity(), std::string("Arrow"), PhysicsComponent::Type::PLAYER,
         PhysicsComponent::Shape::CONVEX, true, Ogre::Vector3(0, 0, -10));
     std::shared_ptr<StatusComponent> statusComponent;
 

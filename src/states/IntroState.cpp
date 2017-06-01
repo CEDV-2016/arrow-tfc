@@ -89,6 +89,9 @@ void IntroState::initializeManagers()
   {
     _dialogueMgr = new DialogManager();
   }
+  if (_enemyMgr == NULL) {
+    _enemyMgr = new EnemyManager();
+  }
 }
 
 void
@@ -149,8 +152,8 @@ IntroState::keyReleased
   }
   else if (e.key == OIS::KC_SPACE)
   {
-    //pushState(MainState::getSingletonPtr());
-    pushState(DialogState::getSingletonPtr());
+    pushState(MainState::getSingletonPtr());
+    //pushState(DialogState::getSingletonPtr());
   }
 }
 

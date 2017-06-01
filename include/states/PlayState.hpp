@@ -21,6 +21,7 @@
 #include "MyOverlayManager.hpp"
 #include "MyCollisionManager.hpp"
 #include "CharacterManager.hpp"
+#include "EnemyManager.hpp"
 
 class PlayState : public Ogre::Singleton<PlayState>, public GameState
 {
@@ -83,6 +84,7 @@ protected:
   MyTimer * _timer;
   CameraManager * _camManager;
   ShootManager * _shootManager;
+  EnemyManager * _enemyManager;
 
   bool _exitGame;
   bool _evenFrame;
