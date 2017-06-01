@@ -60,8 +60,8 @@ void MyCollisionManager::detectCollision()
     	       std::cout << node->getName() << std::endl;
     	       _sceneMgr->getRootSceneNode()->removeAndDestroyChild (node->getName());
              _dartboard[j] = true;
-             PlayState* playState = PlayState::getSingletonPtr();
-             playState-> updateDartboards();
+            //  PlayState* playState = PlayState::getSingletonPtr();
+            //  playState-> updateDartboards();
           }
         }
       }

@@ -1,27 +1,15 @@
 #pragma once
 
 #include <Ogre.h>
-#include <OgreOverlaySystem.h>
-#include <OgreOverlayElement.h>
-#include <OgreOverlayManager.h>
 #include <OIS/OIS.h>
 #include <CEGUI.h>
 #include <RendererModules/Ogre/Renderer.h>
 #include <iostream>
 #include <string>
-#include <vector>
 
-#include "MyTimer.hpp"
 #include "Game.hpp"
 #include "GameState.hpp"
-#include "MapManager.hpp"
-#include "CameraManager.hpp"
-#include "ShootManager.hpp"
-#include "MyPhysicsManager.hpp"
-#include "MyOverlayManager.hpp"
-#include "MyCollisionManager.hpp"
-#include "CharacterManager.hpp"
-#include "EnemyManager.hpp"
+#include "MetaManager.hpp"
 
 class PlayState : public Ogre::Singleton<PlayState>, public GameState
 {
@@ -33,72 +21,31 @@ public:
   void pause ();
   void resume ();
 
-  void keyPressed (const OIS::KeyEvent &e);
-  void keyReleased (const OIS::KeyEvent &e);
+  void keyPressed(const OIS::KeyEvent &e);
+  void keyReleased(const OIS::KeyEvent &e);
 
-  void mouseMoved (const OIS::MouseEvent &e);
-  void mousePressed (const OIS::MouseEvent &e, OIS::MouseButtonID id);
-  void mouseReleased (const OIS::MouseEvent &e, OIS::MouseButtonID id);
+  void mouseMoved(const OIS::MouseEvent &e);
+  void mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
+  void mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);
 
-  bool frameStarted (const Ogre::FrameEvent& evt);
-  bool frameEnded (const Ogre::FrameEvent& evt);
+  bool frameStarted(const Ogre::FrameEvent& evt);
+  bool frameEnded(const Ogre::FrameEvent& evt);
+
+  void setPlayerName(std::string name);
 
   // Inherited from Ogre::Singleton.
   static PlayState& getSingleton ();
   static PlayState* getSingletonPtr ();
 
-  void createScene();
-  void createHUD();
-
-  void moveCamera();
-
-  void setPlayerName(std::string name);
-  void updateDartboards();
-  void updateBalls();
-  void updateManagers(Ogre::Real deltaT);
-
-  void endGame(bool win);
-
 private:
-  void goToEndGame(bool win);
-
-protected:
   Ogre::Root* _root;
   Ogre::SceneManager* _sceneMgr;
-  Ogre::Viewport* _viewport;
   Ogre::Camera* _camera;
-  Ogre::RaySceneQuery *_raySceneQuery;
-  Ogre::SceneNode *_selectedNode;
-  CEGUI::OgreRenderer* renderer;
-  OIS::InputManager* _inputManager;
-  OIS::Keyboard* _keyboard;
-  OIS::Mouse* _mouse;
   Game *_game;
-  MapManager * _mapManager;
-  MyPhysicsManager * _physicsManager;
-  MyOverlayManager * _overlayManager;
-  MyCollisionManager * _collisionManager;
-  CharacterManager * _characterManager;
 
-  std::string _name;
-  MyTimer * _timer;
-  CameraManager * _camManager;
-  ShootManager * _shootManager;
-  EnemyManager * _enemyManager;
+  MetaManager* _metaMgr;
 
   bool _exitGame;
-  bool _evenFrame;
 
-  //Camera movement
-  Ogre::AnimationState *_animState;
-  Ogre::SceneNode *cameraNode;
-  Ogre::SceneNode *cameraYawNode;
-  Ogre::SceneNode *cameraPitchNode;
-  Ogre::SceneNode *cameraRollNode;
-  Ogre::Vector3 translateVector;
-  Ogre::Radian rotateScale;
-  float moveScale;
-  Ogre::Radian rotX;
-  Ogre::Radian rotY;
-  bool _moveRight, _moveLeft, _moveUp, _moveDown;
+  void goToEndGame(bool win);
 };

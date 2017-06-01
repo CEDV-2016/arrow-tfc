@@ -2,7 +2,7 @@
 
 #include "GameStatesManager.hpp"
 #include "GameState.hpp"
-#include "MapManager.hpp"
+#include "MetaManager.hpp"
 
 template<> GameStatesManager* Ogre::Singleton<GameStatesManager>::msSingleton = 0;
 
@@ -47,8 +47,8 @@ GameStatesManager::start
   _inputMgr = new InputManager;
   _inputMgr->initialise(_renderWindow);
 
-  _mainTrack = _trackManager->load("Winding-Down.ogg");
-  _mainTrack->play();
+  // _mainTrack = _trackManager->load("Winding-Down.ogg");
+  // _mainTrack->play();
 
   // Registro como key y mouse listener...
   _inputMgr->addKeyListener(this, "GameStatesManager");
@@ -184,6 +184,8 @@ GameStatesManager::configure ()
   _sceneManager->addRenderQueueListener( new Ogre::OverlaySystem() );
   Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
   _overlayManager = Ogre::OverlayManager::getSingletonPtr();
+
+  new MetaManager( _sceneManager );
 
   return true;
 }

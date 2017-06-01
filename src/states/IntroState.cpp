@@ -1,18 +1,11 @@
 #include "IntroState.hpp"
 #include "MainState.hpp"
 #include "DialogState.hpp"
+#include "MapManager.hpp"
 
 template<> IntroState* Ogre::Singleton<IntroState>::msSingleton = 0;
 
-IntroState::IntroState():
-  _physicsMgr(NULL),
-  _mapMgr(NULL),
-  _overlayMgr(NULL),
-  _cameraMgr(NULL),
-  _shootMgr(NULL),
-  _collisionMgr(NULL),
-  _characterMgr(NULL)
-{}
+IntroState::IntroState(){}
 
 void
 IntroState::enter ()
@@ -48,51 +41,12 @@ IntroState::enter ()
   _sceneMgr->setShadowTextureCount(30);
   _sceneMgr->setShadowTextureSize(512);
 
-  initializeManagers();
   createGUI();
   loadBackgroundImage();
 
   _exitGame = false;
 }
 
-void IntroState::initializeManagers()
-{
-  if (_physicsMgr == NULL)
-  {
-    _physicsMgr = new MyPhysicsManager( _sceneMgr );
-  }
-  if (_mapMgr == NULL)
-  {
-    _mapMgr = new MapManager( _sceneMgr, MyPhysicsManager::getSingletonPtr()->getPhysicWorld() );
-  }
-  if (_overlayMgr == NULL)
-  {
-    _overlayMgr = new MyOverlayManager();
-  }
-  if (_cameraMgr == NULL)
-  {
-    _cameraMgr = new CameraManager( _sceneMgr );
-  }
-  if (_shootMgr == NULL)
-  {
-    _shootMgr = new ShootManager( _sceneMgr );
-  }
-  if (_collisionMgr == NULL)
-  {
-    _collisionMgr = new MyCollisionManager( _sceneMgr );
-  }
-  if (_characterMgr == NULL)
-  {
-    _characterMgr = new CharacterManager( _sceneMgr );
-  }
-  if(_dialogueMgr == NULL)
-  {
-    _dialogueMgr = new DialogManager();
-  }
-  if (_enemyMgr == NULL) {
-    _enemyMgr = new EnemyManager();
-  }
-}
 
 void
 IntroState::exit()
@@ -206,15 +160,11 @@ void IntroState::createGUI()
 
 void IntroState::loadBackgroundImage()
 {
-  // Randmonly select background
-  std::string _all_backgrounds[3] {"oil.jpg", "cubism.jpg", "glass.jpg"};
-  unsigned seed = std::time(0);
-  std::srand(seed);
-  std::random_shuffle(&_all_backgrounds[0], &_all_backgrounds[sizeof(_all_backgrounds)/sizeof(*_all_backgrounds)]);
+  std::string background = "background.jpg";
 
   Ogre::TexturePtr m_backgroundTexture = Ogre::TextureManager::getSingleton().createManual("BackgroundTexture",Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, Ogre::TEX_TYPE_2D,640, 480, 0, Ogre::PF_BYTE_BGR,Ogre::TU_DYNAMIC_WRITE_ONLY_DISCARDABLE);
   Ogre::Image m_backgroundImage;
-  m_backgroundImage.load(_all_backgrounds[0], Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+  m_backgroundImage.load(background, Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
   m_backgroundTexture->loadImage(m_backgroundImage);
   Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().create("BackgroundMaterial", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
   material->getTechnique(0)->getPass(0)->createTextureUnitState("BackgroundTexture");

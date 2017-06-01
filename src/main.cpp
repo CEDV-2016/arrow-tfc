@@ -27,13 +27,13 @@ int main () {
   new DialogState();
 
   try
-    {
-      game->start(IntroState::getSingletonPtr());
-    }
+  {
+    game->start(IntroState::getSingletonPtr());
+  }
   catch (Ogre::Exception& e)
-    {
-      std::cerr << "Exception detected: " << e.getFullDescription();
-    }
+  {
+    std::cerr << "Exception detected: " << e.getFullDescription();
+  }
 
   delete game;
 

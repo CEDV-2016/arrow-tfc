@@ -11,7 +11,7 @@
 
 #include "Map.hpp"
 #include "Fader.hpp"
-#include "RoomMap.hpp"
+#include "CitadelMap.hpp"
 #include "Enumerations.hpp"
 #include "MyPhysicsManager.hpp"
 

@@ -2,13 +2,12 @@
 
 template<> MapManager* Ogre::Singleton<MapManager>::msSingleton = 0;
 
-MapManager::MapManager( Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * pyhsicWorld )
+MapManager::MapManager( Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * pyhsicWorld ):
+  _sceneMgr(sceneMgr),
+  _pyhsicWorld(pyhsicWorld),
+  _currentMap(enumerations::Maps::NONE)
 {
-  _sceneMgr = sceneMgr;
-  _pyhsicWorld = pyhsicWorld;
-  _currentMap = enumerations::Maps::NONE;
   _fader = new Fader();
-
   initMaps();
 }
 
@@ -24,8 +23,7 @@ MapManager::~MapManager()
 
 void MapManager::initMaps()
 {
-  _maps[ enumerations::Maps::ROOM ] = MapPtr( new RoomMap( _sceneMgr, _pyhsicWorld ) );
-  // Here will go the declaration of the rest of the maps the game is using
+  _maps[ enumerations::Maps::CITADEL ] = MapPtr( new CitadelMap( _sceneMgr, _pyhsicWorld ) );
 }
 
 void MapManager::update( Ogre::Real deltaT )
