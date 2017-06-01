@@ -18,7 +18,9 @@ public:
     int getType () { return _type; };
 
     enum Type {
+        NODE,
         PARTICLES,
+        PHYSICS,
         STATUS,
         RIGIDBODYANIMATION,
     };
