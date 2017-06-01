@@ -1,0 +1,11 @@
+*.swp
+*~
+obj/
+Final
+*.tar.gz
+Ogre.log
+CEGUI.log
+.project
+.cproject
+ogre.cfg
+docs/

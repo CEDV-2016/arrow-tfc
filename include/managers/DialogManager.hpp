@@ -5,7 +5,8 @@
 #include <CEGUI.h>
 #include <RendererModules/Ogre/Renderer.h>
 
-class DialogManager : public Ogre::Singleton<DialogManager> {
+class DialogManager : public Ogre::Singleton<DialogManager>
+{
     public:
         /// Constructor
         DialogManager ();
