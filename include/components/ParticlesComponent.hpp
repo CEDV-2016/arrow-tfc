@@ -20,7 +20,8 @@ public:
     bool isFinished () override;
 
     enum Type {
-        VOID
+        VOID,
+        PLAYER_LASER
     };
 protected:
     std::shared_ptr<MyParticleSystem> _particle;

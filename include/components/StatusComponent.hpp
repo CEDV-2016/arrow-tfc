@@ -22,7 +22,8 @@ public:
 
     enum Type {
         PLAYER,
-        ENEMY
+        ENEMY,
+        BULLET
     };
 
 protected:

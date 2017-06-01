@@ -45,7 +45,8 @@ public:
 
     enum Type {
         PLAYER = 1,
-        ENEMY = 2,
+        PLAYER_BULLET = 2,
+        ENEMY = 3
     };
 
     enum Shape {
