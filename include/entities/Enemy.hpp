@@ -12,7 +12,7 @@
 class Enemy
 {
 public:
-  Enemy(std::string mesh_name, int id);
+  Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position);
   ~Enemy();
 
   void update(Ogre::Real deltaT);

@@ -1,6 +1,7 @@
 #include "MyCollisionManager.hpp"
 #include "MyPhysicsManager.hpp"
 #include "PlayState.hpp"
+#include "EnemyManager.hpp"
 
 #include "Shapes/OgreBulletCollisionsTrimeshShape.h"
 #include "Shapes/OgreBulletCollisionsSphereShape.h"
@@ -35,11 +36,22 @@ void MyCollisionManager::detectCollision()
     btCollisionObject* obB =
       (btCollisionObject*)(contactManifold->getBody1());
 
+    OgreBulletCollisions::Object *obOB_A1 = _world->findObject(obA);
+    OgreBulletCollisions::Object *obOB_B1 = _world->findObject(obB);
+    if (obOB_A1 && obOB_B1) {
+      Ogre::SceneNode* node1 = obOB_A1->getRootNode();
+      Ogre::SceneNode* node2 = obOB_B1->getRootNode();
+      if (node1 > 0 && node2 > 0) {
+        EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
+        enemyManager->detectCollision(node1->getName(), node2->getName());
+      }
+    }
+
     std::stringstream dartboard_id;
-    for(int j=0; j<5; j++){
+    for(int j=0; j<3; j++){
       if (!_dartboard[j]) {
         dartboard_id.str("");
-        dartboard_id << "Dartboard" << j;
+        dartboard_id << "Enemy" << j;
         Ogre::SceneNode* drain = _sceneMgr->getSceneNode(dartboard_id.str());
 
         OgreBulletCollisions::Object *obDrain = _world->findObject(drain);
@@ -58,10 +70,12 @@ void MyCollisionManager::detectCollision()
           }
           if (node) {
     	       std::cout << node->getName() << std::endl;
-    	       _sceneMgr->getRootSceneNode()->removeAndDestroyChild (node->getName());
-             _dartboard[j] = true;
-             PlayState* playState = PlayState::getSingletonPtr();
-             playState-> updateDartboards();
+    	       //_sceneMgr->getRootSceneNode()->removeAndDestroyChild (node->getName());
+
+
+
+             //PlayState* playState = PlayState::getSingletonPtr();
+             //playState-> updateDartboards();
           }
         }
       }

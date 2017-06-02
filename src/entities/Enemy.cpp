@@ -2,15 +2,15 @@
 #include "SoundFXManager.hpp"
 #include "MyPhysicsManager.hpp"
 
-Enemy::Enemy(std::string mesh_name, int id)
+Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
 {
   _sceneMgr = Ogre::Root::getSingletonPtr()->getSceneManager("SceneManager");
-  _entity  = _sceneMgr->createEntity( mesh_name + std::string("Entity") + std::to_string(id),
+  _entity  = _sceneMgr->createEntity( id + std::string("Entity"),
       mesh_name + std::string(".mesh") );
-  _node = _sceneMgr->createSceneNode( mesh_name + std::to_string(id) );
+  _node = _sceneMgr->createSceneNode( id);
   _node->attachObject( _entity );
   _sceneMgr->getRootSceneNode()->addChild( _node );
-  _position = Ogre::Vector3 ( 0, 0.5, -20 );
+  _position = position;
   _life = 3;
 
   OgreBulletCollisions::StaticMeshToShapeConverter *trimeshConverter =
@@ -18,10 +18,10 @@ Enemy::Enemy(std::string mesh_name, int id)
   OgreBulletCollisions::TriangleMeshCollisionShape *enemy_trimesh =
       trimeshConverter->createTrimesh();
   OgreBulletDynamics::RigidBody *enemy_physic =
-      new OgreBulletDynamics::RigidBody( mesh_name + std::to_string(id),
+      new OgreBulletDynamics::RigidBody( mesh_name + id,
       MyPhysicsManager::getSingletonPtr()->getPhysicWorld());
   enemy_physic->setShape( _node, enemy_trimesh, 0.8, 0.95,
-      0, Ogre::Vector3::ZERO, Ogre::Quaternion::IDENTITY );
+      0, _position, Ogre::Quaternion::IDENTITY );
 }
 
 Enemy::~Enemy()
@@ -47,6 +47,7 @@ void Enemy::update(Ogre::Real deltaT)
 void Enemy::reduceLife()
 {
   _life--;
+  std::cout<< "reduceLife" << _life << std::endl;
 }
 
 bool Enemy::shoot()
