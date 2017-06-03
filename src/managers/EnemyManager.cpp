@@ -25,8 +25,8 @@ void EnemyManager::createEnemy(int phase)
 void EnemyManager::createPhaseOne(){
   for (int i = 0; i < 3; i++) {
     std::string enemyId = "Enemy" + std::to_string(i);
-    _enemies.insert(std::make_pair(enemyId,
-        new Enemy("Arrow", enemyId, Ogre::Vector3 ( i, 0, i ))));
+    Enemy* enemy = new Enemy("Arrow", enemyId, Ogre::Vector3 ( i, 0, i ));
+    _enemies.insert(pair<std::string, Enemy*>(enemyId, enemy));
   }
 }
 
@@ -43,8 +43,15 @@ void EnemyManager::detectCollision(std::string nameObA, std::string nameObB)
 
   itA = _enemies.find(nameObA);
   if (itA != _enemies.end()) {
-    std::cout << "Dentro" << std::endl;
-    Enemy * enemy = itA->second;
+    std::cout << "DentroA" << std::endl;
+    //Enemy enemy = itA->second;
+    //enemy.reduceLife();
+  }
+
+  itB = _enemies.find(nameObB);
+  if (itB != _enemies.end()) {
+    Enemy* enemy = itB->second;
+    std::cout << "DentroB - "<< enemy << std::endl;
     enemy->reduceLife();
   }
 

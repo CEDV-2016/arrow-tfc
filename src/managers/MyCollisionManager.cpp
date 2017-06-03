@@ -28,7 +28,7 @@ void MyCollisionManager::detectCollision()
   btCollisionWorld *bulletWorld = _world->getBulletCollisionWorld();
   int numManifolds = bulletWorld->getDispatcher()->getNumManifolds();
 
-  for (int i=0;i<numManifolds;i++) {
+  for (int i=0; i<numManifolds; i++) {
     btPersistentManifold* contactManifold =
       bulletWorld->getDispatcher()->getManifoldByIndexInternal(i);
     btCollisionObject* obA =
@@ -47,9 +47,8 @@ void MyCollisionManager::detectCollision()
       }
     }
 
-    std::stringstream dartboard_id;
+    /*std::stringstream dartboard_id;
     for(int j=0; j<3; j++){
-      if (!_dartboard[j]) {
         dartboard_id.str("");
         dartboard_id << "Enemy" << j;
         Ogre::SceneNode* drain = _sceneMgr->getSceneNode(dartboard_id.str());
@@ -78,8 +77,7 @@ void MyCollisionManager::detectCollision()
              //playState-> updateDartboards();
           }
         }
-      }
-    }
+    }*/
   }
 }
 
