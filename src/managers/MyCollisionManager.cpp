@@ -25,7 +25,7 @@ void MyCollisionManager::update( Ogre::Real deltaT ){
 
 void MyCollisionManager::detectCollision()
 {
-  btCollisionWorld *bulletWorld = _world->getBulletCollisionWorld();
+  /*btCollisionWorld *bulletWorld = _world->getBulletCollisionWorld();
   int numManifolds = bulletWorld->getDispatcher()->getNumManifolds();
 
   for (int i=0; i<numManifolds; i++) {
@@ -45,6 +45,45 @@ void MyCollisionManager::detectCollision()
         EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
         enemyManager->detectCollision(node1->getName(), node2->getName());
       }
+    }
+  }*/
+
+
+
+    btCollisionWorld *collisionWorld = _world->getBulletCollisionWorld();
+    int numManifolds = collisionWorld->getDispatcher()->getNumManifolds();
+
+    for (int i=0;i<numManifolds;i++)
+    {
+        btPersistentManifold* contactManifold =  collisionWorld->getDispatcher()->getManifoldByIndexInternal(i);
+        btCollisionObject* obA = (btCollisionObject *) contactManifold->getBody0();
+        btCollisionObject* obB = (btCollisionObject *) contactManifold->getBody1();
+
+        int numContacts = contactManifold->getNumContacts();
+        for (int j=0;j<numContacts;j++)
+        {
+            btManifoldPoint& pt = contactManifold->getContactPoint(j);
+            if (pt.getDistance()<0.f)
+            {
+              OgreBulletCollisions::Object *obOB_A1 = _world->findObject(obA);
+              OgreBulletCollisions::Object *obOB_B1 = _world->findObject(obB);
+              if (obOB_A1 && obOB_B1) {
+                Ogre::SceneNode* node1 = obOB_A1->getRootNode();
+                Ogre::SceneNode* node2 = obOB_B1->getRootNode();
+                if (node1 > 0 && node2 > 0) {
+                  if ((node1->getName().substr(0,5).compare("Enemy") == 0) && (node2->getName().substr(0,4).compare("Ball") == 0)) {
+                    //_sceneMgr->getRootSceneNode()->removeAndDestroyChild (node2->getName());
+                    EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
+                    enemyManager->detectCollision(node1->getName());
+                  }else if ((node2->getName().substr(0,5).compare("Enemy") == 0) && (node1->getName().substr(0,4).compare("Ball") == 0)) {
+                    //_sceneMgr->getRootSceneNode()->removeAndDestroyChild (node1->getName());
+                    EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
+                    enemyManager->detectCollision(node2->getName());
+                  }
+                }
+              }
+            }
+        }
     }
 
     /*std::stringstream dartboard_id;
@@ -78,7 +117,7 @@ void MyCollisionManager::detectCollision()
           }
         }
     }*/
-  }
+  //}
 }
 
 MyCollisionManager& MyCollisionManager::getSingleton() {

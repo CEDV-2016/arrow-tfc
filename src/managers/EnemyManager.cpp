@@ -35,27 +35,14 @@ void EnemyManager::update( Ogre::Real deltaT )
 
 }
 
-void EnemyManager::detectCollision(std::string nameObA, std::string nameObB)
+void EnemyManager::detectCollision(std::string nameOb)
 {
-  //std::cout << nameObA << " - " << nameObB << std::endl;
-  std::map<std::string, Enemy*>::iterator itA;
-  std::map<std::string, Enemy*>::iterator itB;
-
-  itA = _enemies.find(nameObA);
-  if (itA != _enemies.end()) {
-    std::cout << "DentroA" << std::endl;
-    //Enemy enemy = itA->second;
-    //enemy.reduceLife();
-  }
-
-  itB = _enemies.find(nameObB);
-  if (itB != _enemies.end()) {
-    Enemy* enemy = itB->second;
-    std::cout << "DentroB - "<< enemy << std::endl;
-    enemy->reduceLife();
-  }
-
-
+    std::map<std::string, Enemy*>::iterator itB;
+    itB = _enemies.find(nameOb);
+    if (itB != _enemies.end()) {
+      Enemy* enemy = itB->second;
+      enemy->reduceLife();
+    }
 }
 
 EnemyManager& EnemyManager::getSingleton() {

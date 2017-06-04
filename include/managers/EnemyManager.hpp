@@ -18,7 +18,7 @@ public:
 
   void createEnemy(int phase);
   void update( Ogre::Real deltaT );
-  void detectCollision(std::string nameObA, std::string nameObB);
+  void detectCollision(std::string nameOb);
 
 private:
   std::map<std::string, Enemy*> _enemies;

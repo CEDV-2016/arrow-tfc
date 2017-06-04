@@ -15,6 +15,7 @@ ShootManager::ShootManager( Ogre::SceneManager * sceneMgr)
 {
   _sceneMgr = sceneMgr;
   _camera = _sceneMgr->getCamera("MainCamera");
+  _numEntities = 0;
 
   _world = MyPhysicsManager::getSingletonPtr()->getPhysicWorld();
 }
@@ -67,7 +68,7 @@ void ShootManager::shootBall()
   Vector3 position = (_camera->getDerivedPosition() + _camera->getDerivedDirection().normalisedCopy() * 2);
 
   Entity *entity = _sceneMgr->createEntity("Ball" + StringConverter::toString(_numEntities), "ball.mesh");
-  SceneNode *node = _sceneMgr->getRootSceneNode()->createChildSceneNode();
+  SceneNode *node = _sceneMgr->getRootSceneNode()->createChildSceneNode("Ball" + StringConverter::toString(_numEntities));
   node->attachObject(entity);
   node->setScale(0.2, 0.2, 0.2);
 

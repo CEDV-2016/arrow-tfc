@@ -46,9 +46,8 @@ void Enemy::update(Ogre::Real deltaT)
 
 void Enemy::reduceLife()
 {
-  std::cout<< "antes reduceLife" << _life << std::endl;
   _life--;
-  std::cout<< "reduceLife" << _life << std::endl;
+  std::cout<< _life << std::endl;
 }
 
 bool Enemy::shoot()
