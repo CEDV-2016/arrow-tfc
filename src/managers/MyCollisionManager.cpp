@@ -55,12 +55,10 @@ void MyCollisionManager::detectCollision()
                         child = _sceneMgr->getRootSceneNode()->getChild(node1->getName());
                     }
                     catch (Ogre::Exception e) {
-                        std::cout << node1->getName() << std::endl;
                         continue;
                     }
                     if(child) {
                         _sceneMgr->getRootSceneNode()->removeChild(child);
-                        std::cout << node1->getName() << std::endl;
                      }
 
                     EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
