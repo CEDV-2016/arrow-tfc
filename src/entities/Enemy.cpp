@@ -47,7 +47,9 @@ void Enemy::update(Ogre::Real deltaT)
 void Enemy::reduceLife()
 {
   _life--;
-  std::cout<< _life << std::endl;
+  if (_life == 0) {
+    _sceneMgr->getRootSceneNode()->removeChild(_node);
+  }
 }
 
 bool Enemy::shoot()

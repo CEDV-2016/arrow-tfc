@@ -60,7 +60,6 @@ void MyCollisionManager::detectCollision()
                     if(child) {
                         _sceneMgr->getRootSceneNode()->removeChild(child);
                      }
-
                     EnemyManager* enemyManager = EnemyManager::getSingletonPtr();
                     enemyManager->detectCollision(node2->getName());
                   }
