@@ -29,4 +29,5 @@ private:
   Ogre::SceneManager *_sceneMgr;
   Ogre::Vector3 _position;
   int _life;
+  std::string _id;
 };

@@ -1,6 +1,7 @@
 #include "Enemy.hpp"
 #include "SoundFXManager.hpp"
 #include "MyPhysicsManager.hpp"
+#include "Particle.hpp"
 
 Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
 {
@@ -12,6 +13,7 @@ Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
   _sceneMgr->getRootSceneNode()->addChild( _node );
   _position = position;
   _life = 3;
+  _id = id;
 
   OgreBulletCollisions::StaticMeshToShapeConverter *trimeshConverter =
       new OgreBulletCollisions::StaticMeshToShapeConverter( _entity );
@@ -41,14 +43,16 @@ Enemy::~Enemy()
 
 void Enemy::update(Ogre::Real deltaT)
 {
-
+  
 }
 
 void Enemy::reduceLife()
 {
+  //Particle* enemy = new Particle("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
   _life--;
   if (_life == 0) {
     _sceneMgr->getRootSceneNode()->removeChild(_node);
+    //Particle* enemy = new Particle("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
   }
 }
 

@@ -32,7 +32,13 @@ void EnemyManager::createPhaseOne(){
 
 void EnemyManager::update( Ogre::Real deltaT )
 {
-
+  for (std::map<std::string, Enemy*>::iterator it = _enemies.begin();
+        it != _enemies.end();
+        ++it)
+  {
+    Enemy* enemy = it->second;
+    enemy->update(deltaT);
+  }
 }
 
 void EnemyManager::detectCollision(std::string nameOb)
