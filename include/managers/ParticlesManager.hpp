@@ -1,6 +1,6 @@
 #pragma once
 
-#include "MyParticleSystem.hpp"
+#include "Particle.hpp"
 #include <memory>
 
 class ParticlesManager : public Ogre::Singleton<ParticlesManager>
@@ -10,7 +10,7 @@ public:
     ~ParticlesManager();
 
     void update (float delta);
-    std::shared_ptr<MyParticleSystem> createParticleSystem (Ogre::Vector3 position, int type);
+    std::shared_ptr<Particle> createParticle (Ogre::Vector3 position, int type);
     void destroyAllParticles ();
     int getNumberOfParticles() { return _particles.size(); };
 
@@ -18,6 +18,6 @@ public:
     static ParticlesManager* getSingletonPtr ();
 
 protected:
-    std::vector<std::shared_ptr<MyParticleSystem>> _particles;
-    int _id_counter;
+    std::vector<std::shared_ptr<Particle>> _particles;
+    int _numParticles;
 };

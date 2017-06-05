@@ -1,9 +1,8 @@
 #include "ParticlesManager.hpp"
-#include "ParticlesComponent.hpp"
 
 template <> ParticlesManager* Ogre::Singleton<ParticlesManager>::msSingleton = nullptr;
 
-ParticlesManager::ParticlesManager () : _id_counter(0)
+ParticlesManager::ParticlesManager () : _numParticles(0)
 {
 }
 
@@ -35,14 +34,14 @@ void ParticlesManager::update (float delta)
     }
 }
 
-std::shared_ptr<MyParticleSystem> ParticlesManager::createParticleSystem(Ogre::Vector3 position, int type)
+std::shared_ptr<Particle> ParticlesManager::createParticle(Ogre::Vector3 position, int type)
 {
     std::string name;
     switch (type) {
         default:
             break;
     }
-    std::shared_ptr<MyParticleSystem> particle = std::make_shared<MyParticleSystem>(position, name);
+    std::shared_ptr<Particle> particle = std::make_shared<Particle>("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
     _particles.push_back(particle);
     return particle;
 }
