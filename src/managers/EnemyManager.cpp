@@ -8,7 +8,7 @@ EnemyManager::EnemyManager()
 
 EnemyManager::~EnemyManager()
 {
-  //delete _enemies;
+  _enemies.clear();
 }
 
 void EnemyManager::createEnemy(int phase)

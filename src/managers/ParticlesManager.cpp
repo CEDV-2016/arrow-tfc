@@ -1,6 +1,6 @@
 #include "ParticlesManager.hpp"
 
-template <> ParticlesManager* Ogre::Singleton<ParticlesManager>::msSingleton = nullptr;
+template <> ParticlesManager* Ogre::Singleton<ParticlesManager>::msSingleton = 0;
 
 ParticlesManager::ParticlesManager () : _numParticles(0)
 {
@@ -13,37 +13,45 @@ ParticlesManager::~ParticlesManager ()
 
 ParticlesManager* ParticlesManager::getSingletonPtr ()
 {
-    return msSingleton;
+  assert(msSingleton);
+  return msSingleton;
 }
 
 ParticlesManager& ParticlesManager::getSingleton ()
 {
-    assert(msSingleton);
-    return *msSingleton;
+  assert(msSingleton);
+  return *msSingleton;
 }
 
 void ParticlesManager::update (float delta)
 {
-    int size = _particles.size();
-    for (int i = 0; i < size; ++i) {
-        _particles[i]->update(delta);
-        if (_particles[i]->isFinished()) {
-            _particles.erase(_particles.begin() + i);
-            --i; --size;
-        }
+    for (std::map<std::string, Particle*>::iterator it = _particles.begin();
+          it != _particles.end();
+          ++it)
+    {
+      Particle* particle = it->second;
+      particle->update(delta);
+      if (particle->isFinished()) {
+        _particles.erase(it->first);
+      }
     }
 }
 
-std::shared_ptr<Particle> ParticlesManager::createParticle(Ogre::Vector3 position, int type)
+void ParticlesManager::createParticle(Ogre::Vector3 position, int type)
 {
     std::string name;
     switch (type) {
-        default:
-            break;
+      case Particle::Type::BULLET_COLLISION:
+        name = std::string("Bullet_collision");
+        break;
+      default:
+        break;
     }
-    std::shared_ptr<Particle> particle = std::make_shared<Particle>("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
-    _particles.push_back(particle);
-    return particle;
+    std::cout << "ParticlesMgr - " << name << std::endl;
+
+    Particle* particle = new Particle(name, std::to_string(_numParticles), position);
+    _particles.insert(pair<std::string, Particle*>(std::to_string(_numParticles), particle));
+    _numParticles++;
 }
 
 void ParticlesManager::destroyAllParticles()

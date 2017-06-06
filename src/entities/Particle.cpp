@@ -5,11 +5,12 @@ Particle::Particle (std::string name, std::string id, Ogre::Vector3 position)
 : _particle(nullptr), _node(nullptr), _isFinished(false)
 {
     _sceneMgr = Ogre::Root::getSingletonPtr()->getSceneManager("SceneManager");
-    _particle = _sceneMgr->createParticleSystem("ParticleSystem" + std::to_string(_id), name);
+    _particle = _sceneMgr->createParticleSystem("ParticleSystem" + id, name);
     _node = _sceneMgr->createSceneNode(id);
     _node->attachObject(_particle);
     _node->setPosition(position);
     _sceneMgr->getRootSceneNode()->addChild(_node);
+    _id = id;
 
     if (_particle->getEmitter(0)->getMaxDuration() > 0) {
         _timeToFinish = _particle->getEmitter(0)->

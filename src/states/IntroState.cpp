@@ -92,6 +92,9 @@ void IntroState::initializeManagers()
   if (_enemyMgr == NULL) {
     _enemyMgr = new EnemyManager();
   }
+  if (_particlesMgr == NULL) {
+    _particlesMgr = new ParticlesManager();
+  }
 }
 
 void

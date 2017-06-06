@@ -1,23 +1,26 @@
 #pragma once
 
+#include <Ogre.h>
+#include <string>
+#include <map>
 #include "Particle.hpp"
-#include <memory>
+
+using namespace std;
 
 class ParticlesManager : public Ogre::Singleton<ParticlesManager>
 {
 public:
-    ParticlesManager();
-    ~ParticlesManager();
+  ParticlesManager();
+  ~ParticlesManager();
 
-    void update (float delta);
-    std::shared_ptr<Particle> createParticle (Ogre::Vector3 position, int type);
-    void destroyAllParticles ();
-    int getNumberOfParticles() { return _particles.size(); };
+  static ParticlesManager& getSingleton ();
+  static ParticlesManager* getSingletonPtr ();
 
-    static ParticlesManager& getSingleton ();
-    static ParticlesManager* getSingletonPtr ();
+  void createParticle (Ogre::Vector3 position, int type);
+  void update (float delta);
+  void destroyAllParticles ();
 
-protected:
-    std::vector<std::shared_ptr<Particle>> _particles;
-    int _numParticles;
+private:
+  std::map<std::string, Particle*> _particles;
+  int _numParticles;
 };

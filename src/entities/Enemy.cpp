@@ -2,6 +2,7 @@
 #include "SoundFXManager.hpp"
 #include "MyPhysicsManager.hpp"
 #include "Particle.hpp"
+#include "ParticlesManager.hpp"
 
 Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
 {
@@ -43,16 +44,16 @@ Enemy::~Enemy()
 
 void Enemy::update(Ogre::Real deltaT)
 {
-  
+
 }
 
 void Enemy::reduceLife()
 {
-  //Particle* enemy = new Particle("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
   _life--;
   if (_life == 0) {
     _sceneMgr->getRootSceneNode()->removeChild(_node);
-    //Particle* enemy = new Particle("Bullet_collision", "0", Ogre::Vector3 ( 0, 0, 0 ));
+    ParticlesManager* particlesMgr = ParticlesManager::getSingletonPtr();
+    particlesMgr->createParticle(_position, Particle::Type::BULLET_COLLISION);
   }
 }
 

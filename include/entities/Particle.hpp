@@ -16,11 +16,15 @@ public:
     void changeDirection (Ogre::Vector3 direction);
     float getMinVelocity ();
 
+    enum Type {
+      BULLET_COLLISION
+    };
+
 private:
     Ogre::ParticleSystem *_particle;
     Ogre::SceneNode *_node;
     Ogre::SceneManager *_sceneMgr;
     bool _isFinished;
     Ogre::Real _timeToFinish;
-    int _id;
+    std::string _id;
 };

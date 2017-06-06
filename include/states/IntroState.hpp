@@ -17,6 +17,7 @@
 #include "CharacterManager.hpp"
 #include "DialogManager.hpp"
 #include "EnemyManager.hpp"
+#include "ParticlesManager.hpp"
 
 #include "GameState.hpp"
 
@@ -74,6 +75,7 @@ class IntroState : public Ogre::Singleton<IntroState>, public GameState
   CharacterManager* _characterMgr;
   DialogManager* _dialogueMgr;
   EnemyManager* _enemyMgr;
+  ParticlesManager* _particlesMgr;
 
   bool _exitGame;
 };
