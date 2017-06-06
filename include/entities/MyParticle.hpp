@@ -17,7 +17,9 @@ public:
     float getMinVelocity ();
 
     enum Type {
-      BULLET_COLLISION
+      BULLET_COLLISION,
+      PLAYER,
+      SHOOT
     };
 
 private:

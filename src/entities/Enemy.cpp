@@ -1,7 +1,7 @@
 #include "Enemy.hpp"
 #include "SoundFXManager.hpp"
 #include "MyPhysicsManager.hpp"
-#include "Particle.hpp"
+#include "MyParticle.hpp"
 #include "ParticlesManager.hpp"
 
 Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
@@ -53,7 +53,7 @@ void Enemy::reduceLife()
   if (_life == 0) {
     _sceneMgr->getRootSceneNode()->removeChild(_node);
     ParticlesManager* particlesMgr = ParticlesManager::getSingletonPtr();
-    particlesMgr->createParticle(_position, Particle::Type::BULLET_COLLISION);
+    particlesMgr->createParticle(_position, MyParticle::Type::BULLET_COLLISION);
   }
 }
 

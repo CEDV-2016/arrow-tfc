@@ -1,6 +1,8 @@
 #include "ShootManager.hpp"
 #include "PlayState.hpp"
 #include "CharacterManager.hpp"
+#include "MyParticle.hpp"
+#include "ParticlesManager.hpp"
 
 #include "Shapes/OgreBulletCollisionsConvexHullShape.h"
 #include "Shapes/OgreBulletCollisionsTrimeshShape.h"
@@ -88,6 +90,9 @@ void ShootManager::shootBall()
 
   PlayState* playState = PlayState::getSingletonPtr();
   playState-> updateBalls();
+
+  ParticlesManager* particlesMgr = ParticlesManager::getSingletonPtr();
+  particlesMgr->createParticle(position, MyParticle::Type::SHOOT);
 }
 
 ShootManager& ShootManager::getSingleton() {

@@ -45,6 +45,12 @@ void ParticlesManager::createParticle(Ogre::Vector3 position, int type)
       case MyParticle::Type::BULLET_COLLISION:
         name = std::string("Bullet_collision");
         break;
+      case MyParticle::Type::PLAYER:
+        name = std::string("PlayerPropeller");
+        break;
+      case MyParticle::Type::SHOOT:
+        name = std::string("WaterBullet");
+        break;
       default:
         break;
     }
