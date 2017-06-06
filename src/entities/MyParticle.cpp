@@ -1,7 +1,7 @@
-#include "Particle.hpp"
+#include "MyParticle.hpp"
 #include <limits>
 
-Particle::Particle (std::string name, std::string id, Ogre::Vector3 position)
+MyParticle::MyParticle (std::string name, std::string id, Ogre::Vector3 position)
 : _particle(nullptr), _node(nullptr), _isFinished(false)
 {
     _sceneMgr = Ogre::Root::getSingletonPtr()->getSceneManager("SceneManager");
@@ -21,7 +21,7 @@ Particle::Particle (std::string name, std::string id, Ogre::Vector3 position)
     }
 }
 
-Particle::~Particle ()
+MyParticle::~MyParticle ()
 {
     _particle->detachFromParent();
     _sceneMgr->destroyParticleSystem(_particle);
@@ -29,7 +29,7 @@ Particle::~Particle ()
     _sceneMgr->destroySceneNode(_node);
 }
 
-void Particle::update (Ogre::Real deltaT)
+void MyParticle::update (Ogre::Real deltaT)
 {
     _particle->_update(deltaT);
     _timeToFinish -= deltaT;
@@ -38,23 +38,23 @@ void Particle::update (Ogre::Real deltaT)
     }
 }
 
-void Particle::finish ()
+void MyParticle::finish ()
 {
   _particle->getEmitter(0)->setEmissionRate(0);
   _timeToFinish = _particle->getEmitter(0)->getMaxTimeToLive();
 }
 
-void Particle::changePosition (Ogre::Vector3 position)
+void MyParticle::changePosition (Ogre::Vector3 position)
 {
   _node->setPosition(position);
 }
 
-void Particle::changeDirection (Ogre::Vector3 direction)
+void MyParticle::changeDirection (Ogre::Vector3 direction)
 {
   _particle->getEmitter(0)->setDirection(direction);
 }
 
-float Particle::getMinVelocity ()
+float MyParticle::getMinVelocity ()
 {
   return _particle->getEmitter(0)->getMinParticleVelocity();
 }

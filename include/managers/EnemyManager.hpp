@@ -1,8 +1,5 @@
 #pragma once
 
-#include <Ogre.h>
-#include <string>
-#include <map>
 #include "Enemy.hpp"
 
 using namespace std;

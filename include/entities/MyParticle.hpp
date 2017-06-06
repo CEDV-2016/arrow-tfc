@@ -3,11 +3,11 @@
 #include <Ogre.h>
 #include <OgreParticleSystem.h>
 
-class Particle
+class MyParticle
 {
 public:
-    Particle(std::string name, std::string id, Ogre::Vector3 position);
-    ~Particle();
+    MyParticle(std::string name, std::string id, Ogre::Vector3 position);
+    ~MyParticle();
 
     void update (Ogre::Real deltaT);
     void changePosition (Ogre::Vector3 position);

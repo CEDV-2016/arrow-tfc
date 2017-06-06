@@ -1,9 +1,6 @@
 #pragma once
 
-#include <Ogre.h>
-#include <string>
-#include <map>
-#include "Particle.hpp"
+#include "MyParticle.hpp"
 
 using namespace std;
 
@@ -21,6 +18,6 @@ public:
   void destroyAllParticles ();
 
 private:
-  std::map<std::string, Particle*> _particles;
+  std::map<std::string, MyParticle*> _particles;
   int _numParticles;
 };

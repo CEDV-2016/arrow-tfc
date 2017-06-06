@@ -1,6 +1,5 @@
 #include "IntroState.hpp"
 #include "MainState.hpp"
-#include "DialogState.hpp"
 
 template<> IntroState* Ogre::Singleton<IntroState>::msSingleton = 0;
 
