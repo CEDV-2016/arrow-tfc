@@ -25,6 +25,8 @@ Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
       MyPhysicsManager::getSingletonPtr()->getPhysicWorld());
   enemy_physic->setShape( _node, enemy_trimesh, 0.8, 0.95,
       0, _position, Ogre::Quaternion::IDENTITY );
+
+  _cameraMgr = CameraManager::getSingletonPtr();
 }
 
 Enemy::~Enemy()
@@ -40,11 +42,13 @@ Enemy::~Enemy()
       _entity = nullptr;
   }
   _sceneMgr = nullptr;
+  _cameraMgr = nullptr;
 }
 
 void Enemy::update(Ogre::Real deltaT)
 {
-
+  std::cout << "Update " << _id << " - "<< playerIsVisible() << std::endl;
+  playerIsInRange();
 }
 
 void Enemy::reduceLife()
@@ -76,4 +80,17 @@ Ogre::Vector3 Enemy::getPosition()
 Ogre::SceneNode * Enemy::getSceneNode()
 {
   return _node;
+}
+
+bool Enemy::playerIsInRange()
+{
+  return (getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER;
+}
+
+bool Enemy::playerIsVisible()
+{
+  Ogre::Vector3 vect = getPosition() - _cameraMgr->getPosition();
+  Ogre::Vector3 monsterDirection =
+      getSceneNode()->getOrientation() * Ogre::Vector3::NEGATIVE_UNIT_Z;
+  return monsterDirection.directionEquals(vect, Ogre::Degree(VISIBLE_ANGLE));
 }

@@ -98,6 +98,7 @@ void PlayState::updateManagers(Ogre::Real deltaT)
   _physicsManager->update( deltaT );
   _collisionManager->update( deltaT);
   _characterManager->update( deltaT );
+  _enemyManager->update( deltaT);
 
   _overlayManager->setTime( _timer->getGameplayTime() );
 }

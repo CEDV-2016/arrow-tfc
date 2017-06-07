@@ -163,6 +163,16 @@ void CameraManager::moveCamera(Ogre::Real deltaT)
   _last_deltaT = deltaT;
 }
 
+Ogre::Vector3 CameraManager::getPosition()
+{
+  return this->cameraNode->getPosition();
+}
+
+Ogre::SceneNode * CameraManager::getSceneNode()
+{
+  return this->cameraNode;
+}
+
 CameraManager& CameraManager::getSingleton() {
   assert(msSingleton);
   return (*msSingleton);
