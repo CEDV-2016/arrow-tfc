@@ -165,12 +165,17 @@ void CameraManager::moveCamera(Ogre::Real deltaT)
 
 Ogre::Vector3 CameraManager::getPosition()
 {
-  return this->cameraNode->getPosition();
+  return this->cameraNode->convertLocalToWorldPosition(this->cameraNode->getPosition());
 }
 
 Ogre::SceneNode * CameraManager::getSceneNode()
 {
   return this->cameraNode;
+}
+
+Ogre::Vector3 CameraManager::getTranslate()
+{
+  return this->cameraYawNode->getOrientation() * translateVector;
 }
 
 CameraManager& CameraManager::getSingleton() {

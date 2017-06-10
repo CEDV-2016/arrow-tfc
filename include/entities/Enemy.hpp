@@ -32,10 +32,10 @@ public:
   };
 
 private:
-  const float MIN_DISTANCE_TO_PLAYER = 1.0f;
-  const float MAX_DISTANCE_TO_PLAYER = 2.0f;
+  const float MIN_DISTANCE_TO_PLAYER = 5.0f;
+  const float MAX_DISTANCE_TO_PLAYER = 7.0f;
   const float TIME_BETWEEN_ATTACKS = 1.0f;
-  const float VISIBLE_ANGLE = 40.0f;
+  const float VISIBLE_ANGLE = 45.0f;
 
   Ogre::SceneNode *_node;
   Ogre::Entity *_entity;

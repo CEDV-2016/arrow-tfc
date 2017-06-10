@@ -48,7 +48,14 @@ Enemy::~Enemy()
 void Enemy::update(Ogre::Real deltaT)
 {
   std::cout << "Update " << _id << " - "<< playerIsVisible() << std::endl;
-  playerIsInRange();
+  if (playerIsInRange()) {
+    //_node->translate(_cameraMgr->getPosition(), Ogre::SceneNode::TS_LOCAL);
+    Ogre::Vector3 cameraVec = _cameraMgr->getPosition();
+    Ogre::Radian angulo = _position.angleBetween(cameraVec);
+    std::cout << "Angle: " << angulo << std::endl;
+
+
+  }
 }
 
 void Enemy::reduceLife()
@@ -74,7 +81,7 @@ void Enemy::destroy()
 
 Ogre::Vector3 Enemy::getPosition()
 {
-  return _position;
+  return _node->convertLocalToWorldPosition(_node->getPosition());
 }
 
 Ogre::SceneNode * Enemy::getSceneNode()

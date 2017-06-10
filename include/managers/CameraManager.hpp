@@ -22,6 +22,7 @@ public:
 
   Ogre::Vector3 getPosition();
   Ogre::SceneNode * getSceneNode();
+  Ogre::Vector3 getTranslate();
 
 private:
   Ogre::SceneManager* _sceneMgr;
