@@ -47,15 +47,40 @@ Enemy::~Enemy()
 
 void Enemy::update(Ogre::Real deltaT)
 {
-  std::cout << "Update " << _id << " - "<< playerIsVisible() << std::endl;
-  if (playerIsInRange()) {
-    //_node->translate(_cameraMgr->getPosition(), Ogre::SceneNode::TS_LOCAL);
-    Ogre::Vector3 cameraVec = _cameraMgr->getPosition();
-    Ogre::Radian angulo = _position.angleBetween(cameraVec);
-    std::cout << "Angle: " << angulo << std::endl;
-
-
+  if (playerIsInRange() && playerIsVisible()) {
+    if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
+      attack(deltaT);
+    }else{
+      chasing(deltaT);
+    }
+  }else{
+    stop();
   }
+}
+
+void Enemy::chasing(Ogre::Real deltaT)
+{
+  Ogre::Vector3 org = getPosition();
+  Ogre::Vector3 des = _cameraMgr->getPosition();
+  int posX = (des.x - org.x) > 0 ? 1 : -1;
+  int posZ = (des.z - org.z) > 0 ? 1 : -1;
+  Ogre::Vector3 vec = Ogre::Vector3(posX * 0.45f * deltaT, 0, posZ * 0.45f * deltaT);
+  _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
+
+  /*Ogre::Vector3 vec2 = Ogre::Vector3(0, 0, 0);
+  Ogre::Radian rad = vec2.angleBetween(getPosition());
+  std::cout << "GRados: " << Ogre::Degree(rad) << endl;
+  _node->yaw(Ogre::Degree(rad));*/
+}
+
+void Enemy::stop()
+{
+
+}
+
+void Enemy::attack(Ogre::Real deltaT)
+{
+
 }
 
 void Enemy::reduceLife()
@@ -91,7 +116,7 @@ Ogre::SceneNode * Enemy::getSceneNode()
 
 bool Enemy::playerIsInRange()
 {
-  return (getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER;
+  return (getPosition() - _cameraMgr->getPosition()).normalise() < MAX_DISTANCE_TO_PLAYER;
 }
 
 bool Enemy::playerIsVisible()
