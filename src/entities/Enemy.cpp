@@ -67,10 +67,10 @@ void Enemy::chasing(Ogre::Real deltaT)
   Ogre::Vector3 vec = Ogre::Vector3(posX * 0.45f * deltaT, 0, posZ * 0.45f * deltaT);
   _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
 
-  /*Ogre::Vector3 vec2 = Ogre::Vector3(0, 0, 0);
-  Ogre::Radian rad = vec2.angleBetween(getPosition());
-  std::cout << "GRados: " << Ogre::Degree(rad) << endl;
-  _node->yaw(Ogre::Degree(rad));*/
+  /*Ogre::Radian rad = org.angleBetween(des);
+  Ogre::Vector3 up = _node->getOrientation() * Ogre::Vector3::UNIT_Y;
+  Ogre::Quaternion qRotation = Ogre::Quaternion(rad, up);
+  _node->rotate(qRotation);*/
 }
 
 void Enemy::stop()
