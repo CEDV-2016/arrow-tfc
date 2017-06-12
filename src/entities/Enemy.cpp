@@ -47,7 +47,7 @@ Enemy::~Enemy()
 
 void Enemy::update(Ogre::Real deltaT)
 {
-  if (playerIsInRange() && playerIsVisible()) {
+  if (playerIsInRange() ){//&& playerIsVisible()) {
     if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
       attack(deltaT);
     }else{
@@ -62,15 +62,11 @@ void Enemy::chasing(Ogre::Real deltaT)
 {
   Ogre::Vector3 org = getPosition();
   Ogre::Vector3 des = _cameraMgr->getPosition();
-  int posX = (des.x - org.x) > 0 ? 1 : -1;
-  int posZ = (des.z - org.z) > 0 ? 1 : -1;
+  int posX = (des.x - org.x) > 0 ? -1 : 1;
+  int posZ = (des.z - org.z) > 0 ? -1 : 1;
   Ogre::Vector3 vec = Ogre::Vector3(posX * 0.45f * deltaT, 0, posZ * 0.45f * deltaT);
   _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
-
-  /*Ogre::Radian rad = org.angleBetween(des);
-  Ogre::Vector3 up = _node->getOrientation() * Ogre::Vector3::UNIT_Y;
-  Ogre::Quaternion qRotation = Ogre::Quaternion(rad, up);
-  _node->rotate(qRotation);*/
+  _node->lookAt(des, Ogre::Node::TS_WORLD, Ogre::Vector3::UNIT_Z);
 }
 
 void Enemy::stop()
