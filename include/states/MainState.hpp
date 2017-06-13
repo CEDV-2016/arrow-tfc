@@ -33,6 +33,7 @@ public:
 
   void createScene();
   void createGUI();
+  void setupAnimations();
 
   bool newGame(const CEGUI::EventArgs &e);
   bool navigateToCredits(const CEGUI::EventArgs &e);

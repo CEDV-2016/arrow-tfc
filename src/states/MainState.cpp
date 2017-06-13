@@ -47,6 +47,7 @@ void MainState::resume () {
 bool MainState::frameStarted (const Ogre::FrameEvent &evt)
 {
   MapManager::getSingletonPtr()->update( evt.timeSinceLastFrame );
+  CEGUI::System::getSingleton().injectTimePulse( evt.timeSinceLastFrame );
 
   return true;
 }
@@ -104,6 +105,20 @@ void MainState::createGUI()
   {
     _main->show();
   }
+
+  setupAnimations();
+}
+
+void MainState::setupAnimations() {
+  CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
+  animMgr.loadAnimationsFromXML("Menu.anims");
+
+  CEGUI::Animation* startButtAnim = animMgr.getAnimation("TravelRotateIn");
+  CEGUI::AnimationInstance* startButtAnimInstance = animMgr.instantiateAnimation(startButtAnim);
+  CEGUI::Window* startButtWindow = _main->getChild("NewButton");
+  startButtAnimInstance->setTargetWindow(startButtWindow);
+  CEGUI::EventArgs args;
+  startButtWindow->fireEvent("StartRotate", args);
 }
 
 
