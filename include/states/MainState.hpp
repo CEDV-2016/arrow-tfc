@@ -55,6 +55,13 @@ private:
   OIS::Keyboard* _keyboard;
   OIS::Mouse* _mouse;
   CEGUI::Window* _main;
+  CEGUI::Window* _btNew;
+  CEGUI::Window* _btCredits;
+  CEGUI::Window* _btInfo;
+  CEGUI::Window* _btRanking;
+  CEGUI::Window* _btExit;
+
+  CEGUI::AnimationInstance* _animRotate;
 
   bool _exit;
 };

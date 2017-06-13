@@ -86,20 +86,20 @@ void MainState::createGUI()
     //Config Buttons
     CEGUI::Window* aux_button;
 
-    aux_button = _main->getChild("NewButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::newGame, this));
+    _btNew = _main->getChild("NewButton");
+    _btNew->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::newGame, this));
 
-    aux_button= _main->getChild("CreditsButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked,  CEGUI::Event::Subscriber(&MainState::navigateToCredits, this));
+    _btCredits= _main->getChild("CreditsButton");
+    _btCredits->subscribeEvent(CEGUI::PushButton::EventClicked,  CEGUI::Event::Subscriber(&MainState::navigateToCredits, this));
 
-    aux_button = _main->getChild("RankingButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToRanking, this));
+    _btRanking = _main->getChild("RankingButton");
+    _btRanking->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToRanking, this));
 
-    aux_button = _main->getChild("InformationButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToInformation, this));
+    _btInfo = _main->getChild("InformationButton");
+    _btInfo->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToInformation, this));
 
-    aux_button = _main->getChild("ExitButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::quit, this));
+    _btExit = _main->getChild("ExitButton");
+    _btExit->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::quit, this));
   }
   else
   {
@@ -113,12 +113,14 @@ void MainState::setupAnimations() {
   CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
   animMgr.loadAnimationsFromXML("Menu.anims");
 
-  CEGUI::Animation* startButtAnim = animMgr.getAnimation("TravelRotateIn");
-  CEGUI::AnimationInstance* startButtAnimInstance = animMgr.instantiateAnimation(startButtAnim);
-  CEGUI::Window* startButtWindow = _main->getChild("NewButton");
-  startButtAnimInstance->setTargetWindow(startButtWindow);
-  CEGUI::EventArgs args;
-  startButtWindow->fireEvent("StartRotate", args);
+  CEGUI::Animation* startRotateAnim = animMgr.getAnimation("TravelRotateIn");
+  _animRotate = animMgr.instantiateAnimation(startRotateAnim);
+  _animRotate->setTargetWindow(_btNew);
+
+  CEGUI::Animation* startMoveAnim = animMgr.getAnimation("BotBarDialogoMoveInAnimation");
+  CEGUI::AnimationInstance* startButtAnimInstance = animMgr.instantiateAnimation(startMoveAnim);
+  startButtAnimInstance->setTargetWindow(_btNew);
+  startButtAnimInstance->start();
 }
 
 
@@ -130,7 +132,9 @@ bool MainState::newGame(const CEGUI::EventArgs &e)
 
 bool MainState::navigateToCredits(const CEGUI::EventArgs &e)
 {
-  pushState(CreditsState::getSingletonPtr());
+  //pushState(CreditsState::getSingletonPtr());
+  CEGUI::EventArgs args;
+  _btNew->fireEvent("StartRotate", args);
   return true;
 }
 
