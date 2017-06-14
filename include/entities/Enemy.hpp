@@ -51,4 +51,5 @@ private:
   void chasing(Ogre::Real deltaT);
   void stop();
   void attack(Ogre::Real deltaT);
+  Ogre::Vector3 getVectorMove(Ogre::Real deltaT);
 };

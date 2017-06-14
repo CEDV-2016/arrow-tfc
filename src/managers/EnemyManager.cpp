@@ -25,7 +25,7 @@ void EnemyManager::createEnemy(int phase)
 void EnemyManager::createPhaseOne(){
   for (int i = 0; i < 1; i++) {
     std::string enemyId = "Enemy" + std::to_string(i);
-    Enemy* enemy = new Enemy("Arrow", enemyId, Ogre::Vector3 ( i, 0, i*2 ));
+    Enemy* enemy = new Enemy("Arrow", enemyId, Ogre::Vector3 ( 2, 0, 2 ));
     _enemies.insert(pair<std::string, Enemy*>(enemyId, enemy));
   }
 }

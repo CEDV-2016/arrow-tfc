@@ -48,11 +48,11 @@ Enemy::~Enemy()
 void Enemy::update(Ogre::Real deltaT)
 {
   if (playerIsInRange() ){//&& playerIsVisible()) {
-    if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
+    /*if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
       attack(deltaT);
-    }else{
+    }else{*/
       chasing(deltaT);
-    }
+    //}
   }else{
     stop();
   }
@@ -60,13 +60,40 @@ void Enemy::update(Ogre::Real deltaT)
 
 void Enemy::chasing(Ogre::Real deltaT)
 {
+  Ogre::Vector3 vec = getVectorMove(deltaT);
+  std::cout << "Vector: " << vec << std::endl;
+  _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
+
+  Ogre::SceneNode *_camNode = _cameraMgr->getSceneNode();
+  Ogre::Vector3 derived = _camNode->_getDerivedPosition();
+  Ogre::Vector3 dir = Ogre::Vector3(
+    derived.x,
+    _node->_getDerivedPosition().y,
+    derived.z
+  );
+  _node->lookAt(dir, Ogre::Node::TS_WORLD, Ogre::Vector3::UNIT_Z);
+}
+
+Ogre::Vector3 Enemy::getVectorMove(Ogre::Real deltaT)
+{
   Ogre::Vector3 org = getPosition();
   Ogre::Vector3 des = _cameraMgr->getPosition();
-  int posX = (des.x - org.x) > 0 ? -1 : 1;
-  int posZ = (des.z - org.z) > 0 ? -1 : 1;
-  Ogre::Vector3 vec = Ogre::Vector3(posX * 0.45f * deltaT, 0, posZ * 0.45f * deltaT);
-  _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
-  _node->lookAt(des, Ogre::Node::TS_WORLD, Ogre::Vector3::UNIT_Z);
+  Ogre::Vector3 vec = Ogre::Vector3::ZERO;
+  float orgX = org.x;
+  float orgZ = org.z;
+  float desX = des.x;
+  float desZ = des.z;
+
+  if ((orgX >= 0 && orgZ >= 0 && desX >= 0 && desZ >= 0) ||
+      (orgX < 0 && orgZ < 0 && desX < 0 && desZ < 0) ||
+      (orgX > 0 && orgZ < 0 && desX > 0 && desZ < 0) ||
+      (orgX < 0 && orgZ > 0 && desX < 0 && desZ > 0))
+  {
+    vec.x = (desX >= orgX ? 1 : -1) * 0.45f * deltaT * 0.75f;
+    vec.z = (desZ >= orgZ ? 1 : -1) * 0.45f * deltaT;
+  }
+
+  return vec;
 }
 
 void Enemy::stop()

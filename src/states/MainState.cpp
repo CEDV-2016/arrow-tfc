@@ -106,7 +106,7 @@ void MainState::createGUI()
     _main->show();
   }
 
-  setupAnimations();
+  //setupAnimations();
 }
 
 void MainState::setupAnimations() {
