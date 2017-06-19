@@ -3,6 +3,7 @@
 #include "MyPhysicsManager.hpp"
 #include "MyParticle.hpp"
 #include "ParticlesManager.hpp"
+#include "CharacterManager.hpp"
 
 Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
 {
@@ -13,6 +14,7 @@ Enemy::Enemy(std::string mesh_name, std::string id, Ogre::Vector3 position)
   _node->attachObject( _entity );
   _sceneMgr->getRootSceneNode()->addChild( _node );
   _position = position;
+  _chasingVector = Ogre::Vector3(0,0,1);
   _life = 3;
   _id = id;
 
@@ -47,12 +49,12 @@ Enemy::~Enemy()
 
 void Enemy::update(Ogre::Real deltaT)
 {
-  if (playerIsInRange() ){//&& playerIsVisible()) {
-    /*if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
+  if (playerIsInRange() && playerIsVisible()) {
+    if ((getPosition() - _cameraMgr->getPosition()).normalise() < MIN_DISTANCE_TO_PLAYER) {
       attack(deltaT);
-    }else{*/
+    }else{
       chasing(deltaT);
-    //}
+    }
   }else{
     stop();
   }
@@ -60,9 +62,8 @@ void Enemy::update(Ogre::Real deltaT)
 
 void Enemy::chasing(Ogre::Real deltaT)
 {
-  Ogre::Vector3 vec = getVectorMove(deltaT);
-  std::cout << "Vector: " << vec << std::endl;
-  _node->translate(vec, Ogre::SceneNode::TS_LOCAL);
+  _chasingVector.z = deltaT * 0.45f;
+  _node->translate(_chasingVector, Ogre::SceneNode::TS_LOCAL);
 
   Ogre::SceneNode *_camNode = _cameraMgr->getSceneNode();
   Ogre::Vector3 derived = _camNode->_getDerivedPosition();
@@ -72,28 +73,6 @@ void Enemy::chasing(Ogre::Real deltaT)
     derived.z
   );
   _node->lookAt(dir, Ogre::Node::TS_WORLD, Ogre::Vector3::UNIT_Z);
-}
-
-Ogre::Vector3 Enemy::getVectorMove(Ogre::Real deltaT)
-{
-  Ogre::Vector3 org = getPosition();
-  Ogre::Vector3 des = _cameraMgr->getPosition();
-  Ogre::Vector3 vec = Ogre::Vector3::ZERO;
-  float orgX = org.x;
-  float orgZ = org.z;
-  float desX = des.x;
-  float desZ = des.z;
-
-  if ((orgX >= 0 && orgZ >= 0 && desX >= 0 && desZ >= 0) ||
-      (orgX < 0 && orgZ < 0 && desX < 0 && desZ < 0) ||
-      (orgX > 0 && orgZ < 0 && desX > 0 && desZ < 0) ||
-      (orgX < 0 && orgZ > 0 && desX < 0 && desZ > 0))
-  {
-    vec.x = (desX >= orgX ? 1 : -1) * 0.45f * deltaT * 0.75f;
-    vec.z = (desZ >= orgZ ? 1 : -1) * 0.45f * deltaT;
-  }
-
-  return vec;
 }
 
 void Enemy::stop()
@@ -129,7 +108,7 @@ void Enemy::destroy()
 
 Ogre::Vector3 Enemy::getPosition()
 {
-  return _node->convertLocalToWorldPosition(_node->getPosition());
+  return _node->getPosition();
 }
 
 Ogre::SceneNode * Enemy::getSceneNode()
@@ -139,7 +118,9 @@ Ogre::SceneNode * Enemy::getSceneNode()
 
 bool Enemy::playerIsInRange()
 {
-  return (getPosition() - _cameraMgr->getPosition()).normalise() < MAX_DISTANCE_TO_PLAYER;
+  Ogre::Vector3 org = getPosition();
+  Ogre::Vector3 des = _cameraMgr->getPosition();
+  return (org - des).normalise() < MAX_DISTANCE_TO_PLAYER;
 }
 
 bool Enemy::playerIsVisible()

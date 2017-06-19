@@ -26,6 +26,7 @@ public:
 
 private:
   Ogre::SceneManager* _sceneMgr;
+  Ogre::SceneNode *characterNode;
   Ogre::SceneNode *cameraNode;
   Ogre::SceneNode *cameraYawNode;
   Ogre::SceneNode *cameraPitchNode;
