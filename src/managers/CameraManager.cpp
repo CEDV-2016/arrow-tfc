@@ -123,12 +123,11 @@ void CameraManager::initCamera()
 {
   Ogre::Camera* cam = _sceneMgr->getCamera("MainCamera");
   cam->setPosition( Ogre::Vector3(0, 1.5, 4) );
-  //_sceneMgr->getCamera("MainCamera")->lookAt( Ogre::Vector3(-5, 5, -9) );
   cam->setNearClipDistance(0.0001);
   cam->setFarClipDistance(10000);
 
-  Ogre::SceneNode *character_node = CharacterManager::getSingletonPtr()->getSceneNode();
-  this->cameraNode = character_node->createChildSceneNode();
+  characterNode = CharacterManager::getSingletonPtr()->getSceneNode();
+  this->cameraNode = characterNode->createChildSceneNode();
   this->cameraNode->setPosition(1, 0, -1);
     // Create the camera's yaw node as a child of camera's top node.
   this->cameraYawNode = this->cameraNode->createChildSceneNode();
@@ -161,6 +160,21 @@ void CameraManager::moveCamera(Ogre::Real deltaT)
 {
   this->cameraNode->translate(this->cameraYawNode->getOrientation() * translateVector, Ogre::SceneNode::TS_LOCAL);
   _last_deltaT = deltaT;
+}
+
+Ogre::Vector3 CameraManager::getPosition()
+{
+  return this->characterNode->convertLocalToWorldPosition(this->cameraNode->getPosition());
+}
+
+Ogre::SceneNode * CameraManager::getSceneNode()
+{
+  return this->cameraNode;
+}
+
+Ogre::Vector3 CameraManager::getTranslate()
+{
+  return this->cameraYawNode->getOrientation() * translateVector;
 }
 
 CameraManager& CameraManager::getSingleton() {

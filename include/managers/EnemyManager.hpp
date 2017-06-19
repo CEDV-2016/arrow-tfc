@@ -1,7 +1,6 @@
 #pragma once
 
-#include <Ogre.h>
-#include <string>
+#include "Enemy.hpp"
 
 using namespace std;
 
@@ -16,8 +15,10 @@ public:
 
   void createEnemy(int phase);
   void update( Ogre::Real deltaT );
-  void detectCollision(std::string name);
+  void detectCollision(std::string nameOb);
 
 private:
-  std::vector<Ogre::SceneNode> _enemies;
+  std::map<std::string, Enemy*> _enemies;
+
+  void createPhaseOne();
 };

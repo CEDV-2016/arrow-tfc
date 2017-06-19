@@ -13,6 +13,7 @@ MetaManager::MetaManager(Ogre::SceneManager * sceneMgr)
   _characterMgr = new CharacterManager( sceneMgr );
   _dialogMgr = new DialogManager();
   _enemyMgr = new EnemyManager();
+  _particlesMgr = new ParticlesManager();
   _timer = new MyTimer();
   _soundMgr = SoundFXManager::getSingletonPtr();
 }
@@ -24,6 +25,8 @@ void MetaManager::update(Ogre::Real deltaT)
   _cameraMgr->moveCamera( deltaT );
   _collitionMgr->update( deltaT);
   _characterMgr->update( deltaT );
+  _enemyMgr->update(deltaT);
+  _particlesMgr->update(deltaT);
   _overlayMgr->setTime( _timer->getGameplayTime() );
 }
 

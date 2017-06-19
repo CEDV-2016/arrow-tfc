@@ -20,8 +20,13 @@ public:
   void initCamera();
   void moveCamera(Ogre::Real deltaT);
 
+  Ogre::Vector3 getPosition();
+  Ogre::SceneNode * getSceneNode();
+  Ogre::Vector3 getTranslate();
+
 private:
   Ogre::SceneManager* _sceneMgr;
+  Ogre::SceneNode *characterNode;
   Ogre::SceneNode *cameraNode;
   Ogre::SceneNode *cameraYawNode;
   Ogre::SceneNode *cameraPitchNode;

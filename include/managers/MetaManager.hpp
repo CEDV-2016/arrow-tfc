@@ -19,6 +19,7 @@
 #include "CharacterManager.hpp"
 #include "DialogManager.hpp"
 #include "EnemyManager.hpp"
+#include "ParticlesManager.hpp"
 
 #include "MyTimer.hpp"
 
@@ -50,6 +51,7 @@ public:
   CharacterManager* getCharacterManager();
   DialogManager* getDialogManager();
   EnemyManager* getEnemyManager();
+  ParticlesManager* getParticlesManager();
   SoundFXManager* getSoundManager();
 
   static MetaManager& getSingleton();
@@ -65,6 +67,7 @@ private:
   CharacterManager* _characterMgr;
   DialogManager* _dialogMgr;
   EnemyManager* _enemyMgr;
+  ParticlesManager* _particlesMgr;
   SoundFXManager* _soundMgr;
   MyTimer* _timer;
 };
