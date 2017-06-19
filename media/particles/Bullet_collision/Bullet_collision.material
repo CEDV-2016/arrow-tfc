@@ -1,0 +1,17 @@
+material Bullet_collision
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			depth_write off
+			scene_blend add
+
+			texture_unit
+			{
+				texture Bullet_collision.png
+			}
+		}
+	}
+}

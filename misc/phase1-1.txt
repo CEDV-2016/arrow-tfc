@@ -1,0 +1,2 @@
+1:Gr. Geralt:You have arrived to the planet Zyk, your goal is to find robots' signs. Do not hesitate to attack if necessary.
+2:Denna:Got it!
