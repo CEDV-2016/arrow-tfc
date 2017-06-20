@@ -113,7 +113,8 @@ void DialogManager::setDialogue(float delta)
               _text = "";
               _moveOut++;
               if(_moveOut==1){
-                  _outAnim->start();
+                  //_outAnim->start();
+                  resetDialogue();
                   DialogState::getSingletonPtr()->popState();
               }
         }

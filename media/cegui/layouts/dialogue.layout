@@ -6,7 +6,8 @@
         <Property name="Active" value="true" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
         <Window type="Generic/Image" name="BotBar" >
-            <Property name="Area" value="{{0,0},{0,0},{1,0},{0.15,0}}" />
+            <Property name="Area" value="{{0,0},{0,0},{1,0},{0.15,84}}" />
+            <Property name="Image" value="Dialogue/Pergamino" />
             <Property name="Active" value="true" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="AspectRatio" value="13.714" />
