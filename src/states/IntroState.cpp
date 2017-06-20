@@ -1,5 +1,6 @@
 #include "IntroState.hpp"
 #include "MainState.hpp"
+#include "DialogState.hpp"
 
 template<> IntroState* Ogre::Singleton<IntroState>::msSingleton = 0;
 
@@ -155,7 +156,9 @@ IntroState::keyReleased
   else if (e.key == OIS::KC_SPACE)
   {
     pushState(MainState::getSingletonPtr());
-    //pushState(DialogState::getSingletonPtr());
+    /*DialogState* dialogState = DialogState::getSingletonPtr();
+    dialogState->setDialogue(1,1);
+    pushState(dialogState);*/
   }
 }
 

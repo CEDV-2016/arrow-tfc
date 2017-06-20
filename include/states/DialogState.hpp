@@ -42,8 +42,6 @@ public:
     /// This method sets the value of phase and dialogue
     void setDialogue(int phase, int dialogue) { _phase = phase; _dialogue = dialogue; };
 
-
-
 private:
     /* data */
     Ogre::Root *_root;

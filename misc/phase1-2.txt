@@ -1,3 +1,6 @@
-1:Gr. Geralt:Well done! But we have detected a signal coming from another part of this planet.
-1:Gr. Geralt: We send you to the North Pole
-2:Denna:Got it!
+1:Dr.:Well done! But we have detected a signal coming from another part of this planet.
+1:Dr.: We send you to the North Pole
+2:Arrow:Got it!
+2:Arrow:Go, go, go!
+1:Dr.:Good luck!
+2:Arrow:Thanks!

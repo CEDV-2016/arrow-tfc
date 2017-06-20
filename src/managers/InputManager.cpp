@@ -81,7 +81,7 @@ InputManager::initialise
     renderWindow->getMetrics(width, height, depth, left, top);
 
     // Set mouse region
-    this->setWindowExtents( width, height );
+    //this->setWindowExtents( width, height );
   }
 }
 
