@@ -76,6 +76,7 @@ IntroState::frameStarted
 (const Ogre::FrameEvent& evt)
 {
   MapManager::getSingletonPtr()->update( evt.timeSinceLastFrame );
+  CEGUI::System::getSingleton().injectTimePulse( evt.timeSinceLastFrame );
 
   return true;
 }
@@ -150,12 +151,30 @@ void IntroState::createGUI()
   {
     _intro = CEGUI::WindowManager::getSingleton().loadLayoutFromFile("splash.layout");
     CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild(_intro);
+
+    //Config Buttons
+    _btNext = _intro->getChild("ContinueText");
+    _btNext->hide();
   }
   else
   {
     _intro->show();
   }
   Ogre::OverlayManager::getSingletonPtr()->getByName("SplashOverlay")->show();
+
+  setupAnimations();
+}
+
+void IntroState::setupAnimations()
+{
+  CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
+  animMgr.loadAnimationsFromXML("Menu.anims");
+
+  CEGUI::Animation* fadeAnim = animMgr.getAnimation("AlphaIconIn");
+  CEGUI::AnimationInstance* fadeAnimInstance = animMgr.instantiateAnimation(fadeAnim);
+  fadeAnimInstance->setTargetWindow(_btNext);
+  fadeAnimInstance->start();
+  _btNext->show();
 }
 
 void IntroState::loadBackgroundImage()

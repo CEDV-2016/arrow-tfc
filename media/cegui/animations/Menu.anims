@@ -35,7 +35,7 @@
     <AnimationDefinition autoStart="false" duration="1" name="AlphaIconIn" replayMode="bounce">
         <Affector applicationMethod="absolute" interpolator="float" property="Alpha">
             <KeyFrame position="0" progression="linear" value="1.0" />
-            <KeyFrame position="1.0" progression="linear" value="0.5" />
+            <KeyFrame position="1.0" progression="linear" value="0.1" />
         </Affector>
     </AnimationDefinition>
     <AnimationDefinition autoStart="false" duration="1" name="AlphaIconOut" replayMode="bounce">

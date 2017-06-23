@@ -84,8 +84,6 @@ void MainState::createGUI()
     CEGUI::System::getSingleton().getDefaultGUIContext().getRootWindow()->addChild(_main);
 
     //Config Buttons
-    CEGUI::Window* aux_button;
-
     _btNew = _main->getChild("NewButton");
     _btNew->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::newGame, this));
     _btNew->hide();
@@ -116,7 +114,6 @@ void MainState::createGUI()
 void MainState::setupAnimations()
 {
   CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
-  animMgr.loadAnimationsFromXML("Menu.anims");
 
   CEGUI::Animation* newAnim = animMgr.getAnimation("BtNewMoveInAnimation");
   CEGUI::AnimationInstance* newAnimInstance = animMgr.instantiateAnimation(newAnim);
