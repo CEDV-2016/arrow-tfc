@@ -57,11 +57,34 @@
             <KeyFrame position="10.0" progression="linear" value="{{0, 0}, {0.0, 0}}" />
         </Affector>
     </AnimationDefinition>
-    <AnimationDefinition autoStart="false" duration="3.0" name="BotBarDialogoMoveInAnimation" replayMode="once">
+    <AnimationDefinition autoStart="false" duration="1.5" name="BtNewMoveInAnimation" replayMode="once">
         <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
-            <KeyFrame position="0.5" progression="linear" value="{{0, 0}, {0.4, 0}}" />
-            <KeyFrame position="2.15" progression="quadratic decelerating" value="{{0, 0}, {0, -120}}" />
-            <KeyFrame position="2.27" progression="linear" value="{{0, 0}, {0, -225}}" />
+            <KeyFrame position="0.0" progression="linear" value="{{0, 400}, {0, -225}}" />
+            <KeyFrame position="1.5" progression="linear" value="{{0, 0}, {0, -225}}" />
+        </Affector>
+    </AnimationDefinition>
+    <AnimationDefinition autoStart="false" duration="2.0" name="BtInfoMoveInAnimation" replayMode="once">
+        <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
+            <KeyFrame position="0.0" progression="linear" value="{{0, 400}, {0, -100}}" />
+            <KeyFrame position="2.0" progression="linear" value="{{0, 0}, {0, -100}}" />
+        </Affector>
+    </AnimationDefinition>
+    <AnimationDefinition autoStart="false" duration="2.5" name="BtRankingMoveInAnimation" replayMode="once">
+        <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
+            <KeyFrame position="0.0" progression="linear" value="{{0, 400}, {0, 25}}" />
+            <KeyFrame position="2.5" progression="linear" value="{{0, 0}, {0, 25}}" />
+        </Affector>
+    </AnimationDefinition>
+    <AnimationDefinition autoStart="false" duration="3.0" name="BtCreditsMoveInAnimation" replayMode="once">
+        <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
+            <KeyFrame position="0.0" progression="linear" value="{{0, 400}, {0, 150}}" />
+            <KeyFrame position="3.0" progression="linear" value="{{0, 0}, {0, 150}}" />
+        </Affector>
+    </AnimationDefinition>
+    <AnimationDefinition autoStart="false" duration="3.5" name="BtExitMoveInAnimation" replayMode="once">
+        <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
+            <KeyFrame position="0.0" progression="linear" value="{{0, 400}, {0, 275}}" />
+            <KeyFrame position="3.5" progression="linear" value="{{0, 0}, {0, 275}}" />
         </Affector>
     </AnimationDefinition>
     <AnimationDefinition autoStart="false" duration="7.0" name="BotBarDialogoMoveOutAnimation" replayMode="once">

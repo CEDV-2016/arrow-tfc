@@ -47,6 +47,7 @@ void MainState::resume () {
 bool MainState::frameStarted (const Ogre::FrameEvent &evt)
 {
   MapManager::getSingletonPtr()->update( evt.timeSinceLastFrame );
+  CEGUI::System::getSingleton().injectTimePulse( evt.timeSinceLastFrame );
 
   return true;
 }
@@ -85,27 +86,68 @@ void MainState::createGUI()
     //Config Buttons
     CEGUI::Window* aux_button;
 
-    aux_button = _main->getChild("NewButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::newGame, this));
+    _btNew = _main->getChild("NewButton");
+    _btNew->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::newGame, this));
+    _btNew->hide();
 
-    aux_button= _main->getChild("CreditsButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked,  CEGUI::Event::Subscriber(&MainState::navigateToCredits, this));
+    _btCredits= _main->getChild("CreditsButton");
+    _btCredits->subscribeEvent(CEGUI::PushButton::EventClicked,  CEGUI::Event::Subscriber(&MainState::navigateToCredits, this));
+    _btCredits->hide();
 
-    aux_button = _main->getChild("RankingButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToRanking, this));
+    _btRanking = _main->getChild("RankingButton");
+    _btRanking->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToRanking, this));
+    _btRanking->hide();
 
-    aux_button = _main->getChild("InformationButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToInformation, this));
+    _btInfo = _main->getChild("InformationButton");
+    _btInfo->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::navigateToInformation, this));
+    _btInfo->hide();
 
-    aux_button = _main->getChild("ExitButton");
-    aux_button->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::quit, this));
+    _btExit = _main->getChild("ExitButton");
+    _btExit->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainState::quit, this));
+    _btExit->hide();
   }
   else
   {
     _main->show();
   }
+  setupAnimations();
 }
 
+void MainState::setupAnimations()
+{
+  CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
+  animMgr.loadAnimationsFromXML("Menu.anims");
+
+  CEGUI::Animation* newAnim = animMgr.getAnimation("BtNewMoveInAnimation");
+  CEGUI::AnimationInstance* newAnimInstance = animMgr.instantiateAnimation(newAnim);
+  newAnimInstance->setTargetWindow(_btNew);
+  newAnimInstance->start();
+  _btNew->show();
+
+  CEGUI::Animation* infoAnim = animMgr.getAnimation("BtInfoMoveInAnimation");
+  CEGUI::AnimationInstance* infoAnimInstance = animMgr.instantiateAnimation(infoAnim);
+  infoAnimInstance->setTargetWindow(_btInfo);
+  infoAnimInstance->start();
+  _btInfo->show();
+
+  CEGUI::Animation* rankingAnim = animMgr.getAnimation("BtRankingMoveInAnimation");
+  CEGUI::AnimationInstance* rankingAnimInstance = animMgr.instantiateAnimation(rankingAnim);
+  rankingAnimInstance->setTargetWindow(_btRanking);
+  rankingAnimInstance->start();
+  _btRanking->show();
+
+  CEGUI::Animation* creditsAnim = animMgr.getAnimation("BtCreditsMoveInAnimation");
+  CEGUI::AnimationInstance* creditsAnimInstance = animMgr.instantiateAnimation(creditsAnim);
+  creditsAnimInstance->setTargetWindow(_btCredits);
+  creditsAnimInstance->start();
+  _btCredits->show();
+
+  CEGUI::Animation* exitAnim = animMgr.getAnimation("BtExitMoveInAnimation");
+  CEGUI::AnimationInstance* exitAnimInstance = animMgr.instantiateAnimation(exitAnim);
+  exitAnimInstance->setTargetWindow(_btExit);
+  exitAnimInstance->start();
+  _btExit->show();
+}
 
 bool MainState::newGame(const CEGUI::EventArgs &e)
 {

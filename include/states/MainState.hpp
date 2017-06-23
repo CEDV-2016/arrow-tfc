@@ -33,6 +33,7 @@ public:
 
   void createScene();
   void createGUI();
+  void setupAnimations();
 
   bool newGame(const CEGUI::EventArgs &e);
   bool navigateToCredits(const CEGUI::EventArgs &e);
@@ -48,12 +49,18 @@ private:
   Ogre::RaySceneQuery *_raySceneQuery;
   Ogre::SceneNode *_selectedNode;
 
-
   CEGUI::OgreRenderer* renderer;
   OIS::InputManager* _inputManager;
   OIS::Keyboard* _keyboard;
   OIS::Mouse* _mouse;
   CEGUI::Window* _main;
+  CEGUI::Window* _btNew;
+  CEGUI::Window* _btCredits;
+  CEGUI::Window* _btInfo;
+  CEGUI::Window* _btRanking;
+  CEGUI::Window* _btExit;
+
+  CEGUI::AnimationInstance* _animRotate;
 
   bool _exit;
 };
