@@ -33,6 +33,7 @@ public:
   static RankingState* getSingletonPtr ();
 
   void createGUI();
+  void setupAnimations();
 
   bool back(const CEGUI::EventArgs &e);
 
@@ -48,6 +49,11 @@ protected:
   OIS::Keyboard* _keyboard;
   OIS::Mouse* _mouse;
   CEGUI::Window* _rankingGUI;
+  CEGUI::Window* _layout1;
+  CEGUI::Window* _layout2;
+  CEGUI::Window* _layout3;
+  CEGUI::Window* _layout4;
+  CEGUI::Window* _layout5;
   RankingManager* _rankingManager;
 
   bool _exitGame;

@@ -1,144 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <GUILayout version="4" >
-    <Window type="DefaultWindow" name="RankingWindow" >
-        <Property name="Area" value="{{0,0},{0.00555556,0},{1,0},{1.00555,0}}" />
+    <Window type="DefaultWindow" name="DefaultWindow" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="Active" value="true" />
         <Property name="MaxSize" value="{{1,0},{1,0}}" />
-        <Property name="AspectRatio" value="1.8" />
-        <Window type="Vanilla/Label" name="Pos1" >
-            <Property name="Area" value="{{0,-450},{0,-240},{0,-322},{0,-120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']1" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="HorizontalLayoutContainer" name="Layout1" >
+            <Property name="Area" value="{{0,212},{0,64},{0,1039},{0,164}}" />
+            <Property name="Active" value="true" />
+            <Window type="Vanilla/Label" name="Pos1" >
+                <Property name="Area" value="{{0,0},{0,0},{0,160},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="1" />
+                <Property name="Active" value="true" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Name1" >
+                <Property name="Area" value="{{0,160},{0,0},{0,487},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="AAA" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Point1" >
+                <Property name="Area" value="{{0,487},{0,0},{0,827},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="1000" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
         </Window>
-        <Window type="Vanilla/Label" name="Name1" >
-            <Property name="Area" value="{{0,0},{0,-240},{0.332031,46},{0,-120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']User 1" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="LeftAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="HorizontalLayoutContainer" name="Layout2" >
+            <Property name="Area" value="{{0,212},{0,164},{0,1039},{0,264}}" />
+            <Window type="Vanilla/Label" name="Pos2" >
+                <Property name="Area" value="{{0,0},{0,0},{0,160},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="2" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Name2" >
+                <Property name="Area" value="{{0,160},{0,0},{0,487},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="BBB" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Point2" >
+                <Property name="Area" value="{{0,487},{0,0},{0,827},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="900" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
         </Window>
-        <Window type="Vanilla/Label" name="Point1" >
-            <Property name="Area" value="{{0,450},{0,-240},{0,660},{0,-120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']500" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="RightAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="HorizontalLayoutContainer" name="Layout3" >
+            <Property name="Area" value="{{0,212},{0,264},{0,1039},{0,364}}" />
+            <Window type="Vanilla/Label" name="Pos3" >
+                <Property name="Area" value="{{0,0},{0,0},{0,160},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="3" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Name3" >
+                <Property name="Area" value="{{0,160},{0,0},{0,487},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="CCC" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Point3" >
+                <Property name="Area" value="{{0,487},{0,0},{0,827},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="800" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
         </Window>
-        <Window type="Vanilla/Label" name="Pos2" >
-            <Property name="Area" value="{{0,-450},{0,-120},{0,-322},{0,0}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']2" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="HorizontalLayoutContainer" name="Layout4" >
+            <Property name="Area" value="{{0,210},{0,364},{0,1037},{0,464}}" />
+            <Window type="Vanilla/Label" name="Pos4" >
+                <Property name="Area" value="{{0,0},{0,0},{0,160},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="4" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Name4" >
+                <Property name="Area" value="{{0,160},{0,0},{0,487},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="ddd" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Point4" >
+                <Property name="Area" value="{{0,487},{0,0},{0,827},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="700" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
         </Window>
-        <Window type="Vanilla/Label" name="Name2" >
-            <Property name="Area" value="{{0,0},{0,-120},{0.332031,46},{0,0}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']User 2" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="LeftAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Point2" >
-            <Property name="Area" value="{{0,450},{0,-120},{0,651},{0,0}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']90" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="RightAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Pos3" >
-            <Property name="Area" value="{{0,-450},{0,0},{0,-322},{0,120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']3" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Name3" >
-            <Property name="Area" value="{{0,0},{0,0},{0.332031,46},{0,120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']User 3" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="LeftAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Point3" >
-            <Property name="Area" value="{{0,450},{0,0},{0,660},{0,120}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']80" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="RightAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Pos4" >
-            <Property name="Area" value="{{0,-450},{0,120},{0,-322},{0,240}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']4" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Name4" >
-            <Property name="Area" value="{{0,0},{0,120},{0.332031,46},{0,240}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']User 4" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="LeftAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Point4" >
-            <Property name="Area" value="{{0,450},{0,120},{0,660},{0,240}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']70" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="RightAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Pos5" >
-            <Property name="Area" value="{{0,-450},{0,240},{0,-322},{0,360}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']5" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Name5" >
-            <Property name="Area" value="{{0,0},{0,240},{0.332031,46},{0,360}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']User 5" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="LeftAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
-        </Window>
-        <Window type="Vanilla/Label" name="Point5" >
-            <Property name="Area" value="{{0,450},{0,240},{0,660},{0,360}}" />
-            <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']60" />
-            <Property name="MaxSize" value="{{1,0},{1,0}}" />
-            <Property name="HorzFormatting" value="RightAligned" />
-            <Property name="VerticalAlignment" value="Centre" />
-            <Property name="HorizontalAlignment" value="Centre" />
+        <Window type="HorizontalLayoutContainer" name="Layout5" >
+            <Property name="Area" value="{{0,212},{0,464},{0,1039},{0,564}}" />
+            <Window type="Vanilla/Label" name="Pos5" >
+                <Property name="Area" value="{{0,0},{0,0},{0,160},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="5" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Name5" >
+                <Property name="Area" value="{{0,160},{0,0},{0,487},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="eee" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
+            <Window type="Vanilla/Label" name="Point5" >
+                <Property name="Area" value="{{0,487},{0,0},{0,827},{0,100}}" />
+                <Property name="Font" value="Jura-45" />
+                <Property name="Text" value="600" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            </Window>
         </Window>
         <Window type="Vanilla/Button" name="BackButton" >
             <Property name="Area" value="{{0,40},{0,-40},{0,150},{0,10}}" />
             <Property name="Font" value="Jura-35" />
-            <Property name="Text" value="[colour='FF000000']Atras" />
+            <Property name="Text" value="[colour=&apos;FF000000&apos;]Atras" />
             <Property name="VerticalAlignment" value="Bottom" />
         </Window>
     </Window>
