@@ -41,6 +41,7 @@ bool
 CreditsState::frameStarted
 (const Ogre::FrameEvent& evt)
 {
+  CEGUI::System::getSingleton().injectTimePulse( evt.timeSinceLastFrame );
   return true;
 }
 
@@ -112,11 +113,34 @@ void CreditsState::createGUI()
     //Config buttons
     CEGUI::Window* backButton = _creditsGUI->getChild("BackButton");
     backButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&CreditsState::back, this));
+    _title = _creditsGUI->getChild("Create");
+    _component1 = _creditsGUI->getChild("Pedro");
+    _component2 = _creditsGUI->getChild("JJ");
   }
   else
   {
     _creditsGUI->show();
   }
+  setupAnimations();
+}
+
+void CreditsState::setupAnimations() {
+  CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
+
+  CEGUI::Animation* titleAnim = animMgr.getAnimation("RingsContainerSizeIn");
+  CEGUI::AnimationInstance* titleAnimInstance = animMgr.instantiateAnimation(titleAnim);
+  titleAnimInstance->setTargetWindow(_title);
+  titleAnimInstance->start();
+
+  CEGUI::Animation* component1Anim = animMgr.getAnimation("RingsContainerSizeIn");
+  CEGUI::AnimationInstance* comp1AnimInstance = animMgr.instantiateAnimation(component1Anim);
+  comp1AnimInstance->setTargetWindow(_component1);
+  comp1AnimInstance->start();
+
+  CEGUI::Animation* component2Anim = animMgr.getAnimation("RingsContainerSizeIn");
+  CEGUI::AnimationInstance* comp2AnimInstance = animMgr.instantiateAnimation(component2Anim);
+  comp2AnimInstance->setTargetWindow(_component2);
+  comp2AnimInstance->start();
 }
 
 bool CreditsState::back(const CEGUI::EventArgs &e)

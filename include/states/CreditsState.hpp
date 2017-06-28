@@ -32,6 +32,7 @@ public:
   static CreditsState* getSingletonPtr ();
 
   void createGUI();
+  void setupAnimations();
 
   bool back(const CEGUI::EventArgs &e);
 
@@ -47,6 +48,9 @@ protected:
   OIS::Keyboard* _keyboard;
   OIS::Mouse* _mouse;
   CEGUI::Window* _creditsGUI;
+  CEGUI::Window* _title;
+  CEGUI::Window* _component1;
+  CEGUI::Window* _component2;
 
   bool _exitGame;
 };
