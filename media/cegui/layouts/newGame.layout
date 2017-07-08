@@ -9,7 +9,7 @@
         <Window type="Vanilla/Label" name="Name" >
             <Property name="Area" value="{{0,35},{0,-128},{0,737},{0,0}}" />
             <Property name="Font" value="Jura-65" />
-            <Property name="Text" value="[colour='FF000000']Nombre:" />
+            <Property name="Text" value="[colour='FF000000']Type your name" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="HorzFormatting" value="LeftAligned" />
             <Property name="VerticalAlignment" value="Centre" />
@@ -24,14 +24,14 @@
         <Window type="Vanilla/Button" name="PlayButton" >
             <Property name="Area" value="{{0,-40},{0,-40},{0,350},{0,64}}" />
             <Property name="Font" value="Jura-45" />
-            <Property name="Text" value="[colour='FF000000']Empezar" />
+            <Property name="Text" value="[colour='FF000000']Begin" />
             <Property name="VerticalAlignment" value="Bottom" />
             <Property name="HorizontalAlignment" value="Right" />
         </Window>
         <Window type="Vanilla/Button" name="BackButton" >
             <Property name="Area" value="{{0,40},{0,-40},{0,490},{0,64}}" />
             <Property name="Font" value="Jura-40" />
-            <Property name="Text" value="[colour='FF000000']ATRAS" />
+            <Property name="Text" value="[colour='FF000000']Back" />
             <Property name="VerticalAlignment" value="Bottom" />
         </Window>
     </Window>

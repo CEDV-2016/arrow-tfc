@@ -15,7 +15,7 @@
         <Window type="Vanilla/Label" name="NameLabel" >
             <Property name="Area" value="{{0,40},{0,0},{0,568},{0,68}}" />
             <Property name="Font" value="Jura-25" />
-            <Property name="Text" value="Nombre" />
+            <Property name="Text" value="Name" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="HorzFormatting" value="LeftAligned" />
             <Property name="VerticalAlignment" value="Centre" />

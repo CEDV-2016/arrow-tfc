@@ -115,7 +115,7 @@
         <Window type="Vanilla/Button" name="BackButton" >
             <Property name="Area" value="{{0,40},{0,-40},{0,150},{0,10}}" />
             <Property name="Font" value="Jura-35" />
-            <Property name="Text" value="[colour=&apos;FF000000&apos;]Atras" />
+            <Property name="Text" value="[colour=&apos;FF000000&apos;]Back" />
             <Property name="VerticalAlignment" value="Bottom" />
         </Window>
     </Window>

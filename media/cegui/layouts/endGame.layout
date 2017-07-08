@@ -9,7 +9,7 @@
         <Window type="Vanilla/Label" name="winLabel" >
             <Property name="Area" value="{{0,0},{0,-78},{0,838},{0,26}}" />
             <Property name="Font" value="Jura-45" />
-            <Property name="Text" value="¡Has ganado!" />
+            <Property name="Text" value="You won!" />
             <Property name="MaxSize" value="{{1,0},{1,0}}" />
             <Property name="VerticalAlignment" value="Centre" />
             <Property name="HorizontalAlignment" value="Centre" />
@@ -33,7 +33,7 @@
         <Window type="Vanilla/Button" name="endWinButton" >
             <Property name="Area" value="{{0,0},{0,0},{0,126},{0,50}}" />
             <Property name="Font" value="Jura-30" />
-            <Property name="Text" value="[colour='FF000000']Fin" />
+            <Property name="Text" value="[colour='FF000000']End" />
             <Property name="VerticalAlignment" value="Bottom" />
             <Property name="HorizontalAlignment" value="Right" />
         </Window>
