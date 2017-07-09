@@ -30,7 +30,7 @@ void MetaManager::update(Ogre::Real deltaT)
   _overlayMgr->setTime( _timer->getGameplayTime() );
 }
 
-void MetaManager::start()
+void MetaManager::start( std::string player_name )
 {
   _mapMgr->changeMap( enumerations::Maps::CITADEL, false );
   _characterMgr->loadCharacter();
@@ -60,11 +60,6 @@ void MetaManager::finish()
   _timer->stop();
   _mapMgr->destroyAllMaps();
   _overlayMgr->hideHUD();
-}
-
-void MetaManager::setPlayerName( std::string name )
-{
-  player_name = name;
 }
 
 void MetaManager::keyPressed(const OIS::KeyEvent &e)

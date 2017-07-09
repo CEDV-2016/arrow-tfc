@@ -29,7 +29,7 @@ PlayState::enter ()
   cam->setFarClipDistance(10000);
 
   _metaMgr = MetaManager::getSingletonPtr();
-  _metaMgr->start();
+  _metaMgr->start( _game->getPlayerName() );
 
   _exitGame = false;
 }
@@ -136,7 +136,6 @@ PlayState::getSingleton ()
 void PlayState::setPlayerName(std::string name)
 {
   _game->setPlayerName( name );
-  _metaMgr->setPlayerName( name );
 }
 
 void PlayState::goToEndGame(bool win)
