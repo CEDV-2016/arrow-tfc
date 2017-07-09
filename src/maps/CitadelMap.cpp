@@ -38,7 +38,7 @@ void CitadelMap::create()
   characters_node->attachObject( characters_entity );
   _sceneMgr->getRootSceneNode()->addChild( characters_node );
 
-
+  TrackManager::getSingletonPtr()->load("Citadel.ogg")->play();
 }
 
 void CitadelMap::destroy()

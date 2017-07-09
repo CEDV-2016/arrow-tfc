@@ -9,6 +9,7 @@
 #include "Shapes/OgreBulletCollisionsTrimeshShape.h"
 #include "Shapes/OgreBulletCollisionsSphereShape.h"
 #include "Utils/OgreBulletCollisionsMeshToShapeConverter.h"
+#include "TrackManager.hpp"
 
 class Map
 {

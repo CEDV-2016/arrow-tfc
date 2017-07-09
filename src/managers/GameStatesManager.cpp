@@ -47,8 +47,7 @@ GameStatesManager::start
   _inputMgr = new InputManager;
   _inputMgr->initialise(_renderWindow);
 
-  // _mainTrack = _trackManager->load("Winding-Down.ogg");
-  // _mainTrack->play();
+  TrackManager::getSingletonPtr()->load("Menu.ogg")->play();
 
   // Registro como key y mouse listener...
   _inputMgr->addKeyListener(this, "GameStatesManager");
