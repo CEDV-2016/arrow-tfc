@@ -8,6 +8,7 @@ namespace enumerations
     NONE = -1,
     CITADEL,
     FORGOTTEN_FOREST,
+    FROZEN_ASHES,
   };
 
 }

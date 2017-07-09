@@ -25,6 +25,7 @@ void MapManager::initMaps()
 {
   _maps[ enumerations::Maps::CITADEL ] = MapPtr( new CitadelMap( _sceneMgr, _pyhsicWorld ) );
   _maps[ enumerations::Maps::FORGOTTEN_FOREST ] = MapPtr( new ForgottenForestMap( _sceneMgr, _pyhsicWorld ) );
+  _maps[ enumerations::Maps::FROZEN_ASHES ] = MapPtr( new FrozenAshesMap( _sceneMgr, _pyhsicWorld ) );
 }
 
 void MapManager::update( Ogre::Real deltaT )
