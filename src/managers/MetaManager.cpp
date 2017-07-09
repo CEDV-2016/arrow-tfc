@@ -32,7 +32,7 @@ void MetaManager::update(Ogre::Real deltaT)
 
 void MetaManager::start( std::string player_name )
 {
-  _mapMgr->changeMap( enumerations::Maps::CITADEL, false );
+  _mapMgr->changeMap( enumerations::Maps::FORGOTTEN_FOREST, false );
   _characterMgr->loadCharacter();
 
   _overlayMgr->createHUD();

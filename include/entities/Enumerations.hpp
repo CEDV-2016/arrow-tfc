@@ -7,6 +7,7 @@ namespace enumerations
   {
     NONE = -1,
     CITADEL,
+    FORGOTTEN_FOREST,
   };
 
 }

@@ -3,8 +3,8 @@
 #include <iostream>
 
 CitadelMap::CitadelMap(Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * world) :
-_sceneMgr( sceneMgr ),
-_world( world )
+  _sceneMgr( sceneMgr ),
+  _world( world )
 {
 }
 
@@ -43,7 +43,7 @@ void CitadelMap::create()
 
 void CitadelMap::destroy()
 {
-  _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel" ) );
-  _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Light" ) );
-  _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Characters" ) );
+  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel" ) );
+  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Light" ) );
+  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Characters" ) );
 }

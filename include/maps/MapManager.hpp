@@ -12,6 +12,8 @@
 #include "Map.hpp"
 #include "Fader.hpp"
 #include "CitadelMap.hpp"
+#include "ForgottenForestMap.hpp"
+#include "FrozenAshesMap.hpp"
 #include "Enumerations.hpp"
 #include "MyPhysicsManager.hpp"
 
