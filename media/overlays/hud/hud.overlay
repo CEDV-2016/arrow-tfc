@@ -2,7 +2,7 @@ template element TextArea(MyTemplates/Text)
 {
   font_name Return_to_sender
   metrics_mode pixels
-  char_height 64
+  char_height 72
   colour 0.0 0.0 0.0
 }
 
