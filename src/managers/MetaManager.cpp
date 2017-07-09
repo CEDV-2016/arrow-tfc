@@ -36,6 +36,7 @@ void MetaManager::start()
   _characterMgr->loadCharacter();
 
   _overlayMgr->createHUD();
+  _overlayMgr->setPlayerName(player_name);
   _overlayMgr->setTime( _timer->getGameplayTime() );
 
   _cameraMgr->initCamera();
@@ -59,6 +60,11 @@ void MetaManager::finish()
   _timer->stop();
   _mapMgr->destroyAllMaps();
   _overlayMgr->hideHUD();
+}
+
+void MetaManager::setPlayerName( std::string name )
+{
+  player_name = name;
 }
 
 void MetaManager::keyPressed(const OIS::KeyEvent &e)

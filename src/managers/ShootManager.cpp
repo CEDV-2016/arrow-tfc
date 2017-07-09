@@ -47,17 +47,17 @@ ShootManager::~ShootManager()
 
 void ShootManager::initWorld()
 {
-  // Creamos forma de colision para el plano -----------------------
-  OgreBulletCollisions::CollisionShape *Shape;
-  Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0,1,0), 0);   // Vector normal y distancia
-  OgreBulletDynamics::RigidBody *rigidBodyPlane = new OgreBulletDynamics::RigidBody("rigidBodyPlane", _world);
-
-  // Creamos la forma estatica (forma, Restitucion, Friccion) ------
-  rigidBodyPlane->setStaticShape(Shape, 0.1, 0.8);
-
-  // Anadimos los objetos Shape y RigidBody ------------------------
-  _shapes.push_back(Shape);
-  _bodies.push_back(rigidBodyPlane);
+  // // Creamos forma de colision para el plano -----------------------
+  // OgreBulletCollisions::CollisionShape *Shape;
+  // Shape = new OgreBulletCollisions::StaticPlaneCollisionShape(Ogre::Vector3(0,1,0), 0);   // Vector normal y distancia
+  // OgreBulletDynamics::RigidBody *rigidBodyPlane = new OgreBulletDynamics::RigidBody("rigidBodyPlane", _world);
+  //
+  // // Creamos la forma estatica (forma, Restitucion, Friccion) ------
+  // rigidBodyPlane->setStaticShape(Shape, 0.1, 0.8);
+  //
+  // // Anadimos los objetos Shape y RigidBody ------------------------
+  // _shapes.push_back(Shape);
+  // _bodies.push_back(rigidBodyPlane);
 }
 
 void ShootManager::shootBall()

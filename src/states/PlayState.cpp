@@ -136,6 +136,7 @@ PlayState::getSingleton ()
 void PlayState::setPlayerName(std::string name)
 {
   _game->setPlayerName( name );
+  _metaMgr->setPlayerName( name );
 }
 
 void PlayState::goToEndGame(bool win)

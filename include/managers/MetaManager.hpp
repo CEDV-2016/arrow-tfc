@@ -30,6 +30,7 @@ public:
   ~MetaManager();
 
   void update(Ogre::Real deltaT);
+  void setPlayerName(std::string name);
 
   void keyPressed(const OIS::KeyEvent &e);
   void keyReleased(const OIS::KeyEvent &e);
@@ -70,4 +71,6 @@ private:
   ParticlesManager* _particlesMgr;
   SoundFXManager* _soundMgr;
   MyTimer* _timer;
+
+  std::string player_name;
 };
