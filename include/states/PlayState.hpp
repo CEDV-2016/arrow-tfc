@@ -32,7 +32,8 @@ public:
   bool frameEnded(const Ogre::FrameEvent& evt);
 
   void setPlayerName(std::string name);
-
+  Game* getGame();
+  
   // Inherited from Ogre::Singleton.
   static PlayState& getSingleton ();
   static PlayState* getSingletonPtr ();

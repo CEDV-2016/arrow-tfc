@@ -52,6 +52,11 @@ CameraManager::keyPressed
     _d_pressed = true;
   }
 
+  if(e.key == OIS::KC_M)
+  {
+    this->translateVector.z = this->moveScale * _last_deltaT * 15;
+  }
+
   if(e.key == OIS::KC_W || e.key == OIS::KC_S || e.key == OIS::KC_A || e.key == OIS::KC_D)
   {
     CharacterManager::getSingletonPtr()->walk();
@@ -62,7 +67,7 @@ void
 CameraManager::keyReleased
 (const OIS::KeyEvent &e)
 {
-  if(e.key == OIS::KC_W || e.key == OIS::KC_S)
+  if(e.key == OIS::KC_W || e.key == OIS::KC_S || e.key == OIS::KC_M)
   {
     this->translateVector.z = 0;
   }

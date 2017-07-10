@@ -63,6 +63,11 @@ PlayState::frameStarted
 {
   _metaMgr->update( evt.timeSinceLastFrame );
 
+  if ( _game->game_completed() )
+  {
+    goToEndGame(true);
+  }
+
   return true;
 }
 
@@ -160,4 +165,9 @@ void PlayState::goToEndGame(bool win)
   int points = -1;
   endState->setData(win, _game->getPlayerName(), points);
   pushState(endState);
+}
+
+Game* PlayState::getGame()
+{
+  return _game;
 }

@@ -119,7 +119,7 @@ void EndState::createGUI()
       _titleView->setText("Has perdido");
     }
     _nameView->setText(_name);
-    _pointsView->setText(std::to_string(_points));
+    // _pointsView->setText(std::to_string(_points));
   }
   else
   {

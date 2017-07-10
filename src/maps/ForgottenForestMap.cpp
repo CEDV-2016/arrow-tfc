@@ -1,5 +1,6 @@
 #include "ForgottenForestMap.hpp"
 #include "CameraManager.hpp"
+#include "PlayState.hpp"
 
 #include <iostream>
 
@@ -104,6 +105,13 @@ void ForgottenForestMap::destroy()
 
 enumerations::Maps ForgottenForestMap::checkBoundaries(Ogre::Vector3 player)
 {
+  if (player.x < -29 && player.z > -11.7)
+  {
+    std::cout << "COMPLETED!\n";
+    PlayState::getSingletonPtr()->getGame()->complete_Forgotten_Forest();
+    return enumerations::Maps::CITADEL;
+  }
+
   if (player.x > 47)
   {
     return enumerations::Maps::CITADEL;

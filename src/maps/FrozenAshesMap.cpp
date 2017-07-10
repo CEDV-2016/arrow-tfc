@@ -1,5 +1,6 @@
 #include "FrozenAshesMap.hpp"
 #include "CameraManager.hpp"
+#include "PlayState.hpp"
 
 #include <iostream>
 
@@ -90,6 +91,13 @@ void FrozenAshesMap::destroy()
 
 enumerations::Maps FrozenAshesMap::checkBoundaries(Ogre::Vector3 player)
 {
+  if (player.x > 5.5 && player.z > 10.5)
+  {
+    std::cout << "COMPLETED!\n";
+    PlayState::getSingletonPtr()->getGame()->complete_Frozen_Ashes();
+    return enumerations::Maps::CITADEL;
+  }
+
   if (player.x < -45.5)
   {
     return enumerations::Maps::CITADEL;

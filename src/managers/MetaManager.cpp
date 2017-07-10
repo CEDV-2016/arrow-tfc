@@ -25,11 +25,12 @@ void MetaManager::update(Ogre::Real deltaT)
   _cameraMgr->moveCamera( deltaT );
   _collitionMgr->update( deltaT);
   _characterMgr->update( deltaT );
-  _enemyMgr->update(deltaT);
-  _particlesMgr->update(deltaT);
+  _enemyMgr->update( deltaT );
+  _particlesMgr->update( deltaT );
   _overlayMgr->setTime( _timer->getGameplayTime() );
 
   Ogre::Vector3 player_pos = _cameraMgr->getPosition();
+  // std::cout << player_pos.x << "|" << player_pos.z << "------------------\n";
   enumerations::Maps new_map = _mapMgr->checkCurrentMapBoundaries( player_pos );
   if ( new_map != enumerations::Maps::NONE)
   {
