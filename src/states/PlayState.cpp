@@ -3,6 +3,7 @@
 #include "PauseState.hpp"
 #include "EndState.hpp"
 #include "Enemy.hpp"
+#include "MapManager.hpp"
 
 #include <iostream>
 
@@ -93,6 +94,21 @@ PlayState::keyReleased
   if (e.key == OIS::KC_ESCAPE)
   {
     pushState(PauseState::getSingletonPtr());
+  }
+
+  if (e.key == OIS::KC_I)
+  {
+    MapManager::getSingletonPtr()->changeMap( enumerations::Maps::FROZEN_ASHES, true );
+  }
+
+  if (e.key == OIS::KC_O)
+  {
+    MapManager::getSingletonPtr()->changeMap( enumerations::Maps::FORGOTTEN_FOREST, true );
+  }
+
+  if (e.key == OIS::KC_P)
+  {
+    MapManager::getSingletonPtr()->changeMap( enumerations::Maps::FROZEN_ASHES, true );
   }
 
   _metaMgr->keyReleased(e);

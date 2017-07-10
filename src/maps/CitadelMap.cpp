@@ -34,7 +34,7 @@ void CitadelMap::create()
 
   map_file = "Cliff.mesh";
   citadel_entity  = _sceneMgr->createEntity( map_file );
-  citadel_node = _sceneMgr->createSceneNode( "Cliff" );
+  citadel_node = _sceneMgr->createSceneNode( "Citadel_Cliff" );
   citadel_node->attachObject( citadel_entity );
   _sceneMgr->getRootSceneNode()->addChild( citadel_node );
 
@@ -53,7 +53,27 @@ void CitadelMap::create()
 
 void CitadelMap::destroy()
 {
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel" ) );
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Light" ) );
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "Citadel_Characters" ) );
+  try
+  {
+    _sceneMgr->destroySceneNode( "Citadel_Light" );
+  }
+  catch (Ogre::Exception ex) {}
+
+  try
+  {
+    _sceneMgr->destroySceneNode( "Citadel" );
+  }
+  catch (Ogre::Exception ex) {}
+
+  try
+  {
+    _sceneMgr->destroySceneNode( "Citadel_Cliff" );
+  }
+  catch (Ogre::Exception ex) {}
+
+  try
+  {
+    _sceneMgr->destroySceneNode( "Citadel_Characters" );
+  }
+  catch (Ogre::Exception ex) {}
 }
