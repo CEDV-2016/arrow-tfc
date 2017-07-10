@@ -4,8 +4,8 @@
 #include <iostream>
 
 ForgottenForestMap::ForgottenForestMap(Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * world) :
-  _sceneMgr( sceneMgr ),
-  _world( world )
+_sceneMgr( sceneMgr ),
+_world( world )
 {
 }
 
@@ -100,4 +100,16 @@ void ForgottenForestMap::destroy()
     _sceneMgr->destroySceneNode( "FF_Characters" );
   }
   catch (Ogre::Exception ex) {}
+}
+
+enumerations::Maps ForgottenForestMap::checkBoundaries(Ogre::Vector3 player)
+{
+  if (player.x > 47)
+  {
+    return enumerations::Maps::CITADEL;
+  }
+  else
+  {
+    return enumerations::Maps::NONE;
+  }
 }

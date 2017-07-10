@@ -77,3 +77,19 @@ void CitadelMap::destroy()
   }
   catch (Ogre::Exception ex) {}
 }
+
+enumerations::Maps CitadelMap::checkBoundaries(Ogre::Vector3 player)
+{
+  if (player.x > 23)
+  {
+    return enumerations::Maps::FORGOTTEN_FOREST;
+  }
+  if (player.x < -22.2)
+  {
+    return enumerations::Maps::FROZEN_ASHES;
+  }
+  else
+  {
+    return enumerations::Maps::NONE;
+  }
+}

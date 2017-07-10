@@ -4,8 +4,8 @@
 #include <iostream>
 
 FrozenAshesMap::FrozenAshesMap(Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * world) :
-  _sceneMgr( sceneMgr ),
-  _world( world )
+_sceneMgr( sceneMgr ),
+_world( world )
 {
 }
 
@@ -86,4 +86,16 @@ void FrozenAshesMap::destroy()
     _sceneMgr->destroySceneNode( "FA_Character" );
   }
   catch (Ogre::Exception ex) {}
+}
+
+enumerations::Maps FrozenAshesMap::checkBoundaries(Ogre::Vector3 player)
+{
+  if (player.x < -45.5)
+  {
+    return enumerations::Maps::CITADEL;
+  }
+  else
+  {
+    return enumerations::Maps::NONE;
+  }
 }

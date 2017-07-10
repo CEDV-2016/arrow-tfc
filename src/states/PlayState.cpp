@@ -98,7 +98,7 @@ PlayState::keyReleased
 
   if (e.key == OIS::KC_I)
   {
-    MapManager::getSingletonPtr()->changeMap( enumerations::Maps::FROZEN_ASHES, true );
+    MapManager::getSingletonPtr()->changeMap( enumerations::Maps::CITADEL, true );
   }
 
   if (e.key == OIS::KC_O)

@@ -3,9 +3,9 @@
 template<> MapManager* Ogre::Singleton<MapManager>::msSingleton = 0;
 
 MapManager::MapManager( Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * pyhsicWorld ):
-  _sceneMgr(sceneMgr),
-  _pyhsicWorld(pyhsicWorld),
-  _currentMap(enumerations::Maps::NONE)
+_sceneMgr(sceneMgr),
+_pyhsicWorld(pyhsicWorld),
+_currentMap(enumerations::Maps::NONE)
 {
   _fader = new Fader();
   initMaps();
@@ -40,16 +40,21 @@ void MapManager::update( Ogre::Real deltaT )
 */
 void MapManager::changeMap(enumerations::Maps newMap, bool fade)
 {
-  _nextMap = newMap;
-  _fader->setNextMap(newMap);
+  if ( !changing_map )
+  {
+    changing_map = true;
 
-  if ( fade )
-  {
-    _fader->startFadeOut( std::bind(&MapManager::loadMap, this) );
-  }
-  else
-  {
-    loadMap();
+    _nextMap = newMap;
+    _fader->setNextMap(newMap);
+
+    if ( fade )
+    {
+      _fader->startFadeOut( std::bind(&MapManager::loadMap, this) );
+    }
+    else
+    {
+      loadMap();
+    }
   }
 }
 
@@ -65,6 +70,8 @@ void MapManager::loadMap()
   _currentMap = _nextMap;
 
   _fader->startFadeIn();
+
+  changing_map = false;
 }
 
 void MapManager::fadeOut( std::function<void ()> callback )
@@ -86,6 +93,15 @@ void MapManager::destroyAllMaps()
     key = it->first;
     _maps[ key ]->destroy();
   }
+}
+
+enumerations::Maps MapManager::checkCurrentMapBoundaries(Ogre::Vector3 player)
+{
+  if ( _currentMap != enumerations::Maps::NONE)
+  {
+    return _maps[ _currentMap ]->checkBoundaries(player);
+  }
+  return enumerations::Maps::NONE;
 }
 
 MapManager& MapManager::getSingleton()

@@ -12,6 +12,7 @@ public:
 
   void create();
   void destroy();
+  enumerations::Maps checkBoundaries(Ogre::Vector3 player);
 
 private:
   Ogre::SceneManager * _sceneMgr;

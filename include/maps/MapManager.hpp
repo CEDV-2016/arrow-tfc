@@ -32,6 +32,8 @@ public:
   void destroyAllMaps();
   void update( Ogre::Real deltaT );
 
+  enumerations::Maps checkCurrentMapBoundaries(Ogre::Vector3 player);
+
   OgreBulletDynamics::DynamicsWorld * getPhysicWorld();
 
   // Inherited from Ogre::Singleton.
@@ -47,5 +49,7 @@ private:
 
   OgreBulletDynamics::DynamicsWorld * _pyhsicWorld;
 
+  bool changing_map = false;
+  
   void initMaps();
 };

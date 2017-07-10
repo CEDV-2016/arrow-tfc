@@ -28,6 +28,13 @@ void MetaManager::update(Ogre::Real deltaT)
   _enemyMgr->update(deltaT);
   _particlesMgr->update(deltaT);
   _overlayMgr->setTime( _timer->getGameplayTime() );
+
+  Ogre::Vector3 player_pos = _cameraMgr->getPosition();
+  enumerations::Maps new_map = _mapMgr->checkCurrentMapBoundaries( player_pos );
+  if ( new_map != enumerations::Maps::NONE)
+  {
+    _mapMgr->changeMap( new_map, true);
+  }
 }
 
 void MetaManager::setPlayerPosition(double x, double y, double z)
