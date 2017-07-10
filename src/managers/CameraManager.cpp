@@ -33,22 +33,22 @@ CameraManager::keyPressed
 {
   if(e.key == OIS::KC_W)
   {
-    this->translateVector.z = this->moveScale * _last_deltaT;
+    this->translateVector.z = this->moveScale * _last_deltaT * 1.25;
     _w_pressed = true;
   }
   if(e.key == OIS::KC_S)
   {
-    this->translateVector.z = -(this->moveScale * _last_deltaT * 0.5);
+    this->translateVector.z = -(this->moveScale * _last_deltaT * 0.75);
     _s_pressed = true;
   }
   if(e.key == OIS::KC_A)
   {
-    this->translateVector.x = this->moveScale * _last_deltaT * 0.75;
+    this->translateVector.x = this->moveScale * _last_deltaT;
     _a_pressed = true;
   }
   if(e.key == OIS::KC_D)
   {
-    this->translateVector.x = -(this->moveScale * _last_deltaT * 0.75);
+    this->translateVector.x = -(this->moveScale * _last_deltaT);
     _d_pressed = true;
   }
 
@@ -128,7 +128,8 @@ void CameraManager::initCamera()
 
   characterNode = CharacterManager::getSingletonPtr()->getSceneNode();
   this->cameraNode = characterNode->createChildSceneNode();
-  this->cameraNode->setPosition(1, 0, -1);
+  this->cameraNode->setPosition(1, 0, -5); //Initial position
+
     // Create the camera's yaw node as a child of camera's top node.
   this->cameraYawNode = this->cameraNode->createChildSceneNode();
 
@@ -170,6 +171,14 @@ Ogre::Vector3 CameraManager::getPosition()
 Ogre::SceneNode * CameraManager::getSceneNode()
 {
   return this->cameraNode;
+}
+
+void CameraManager::setPosition(double x, double y, double z)
+{
+  if (this->cameraNode)
+  {
+    this->cameraNode->setPosition(x, y, z);
+  }
 }
 
 Ogre::Vector3 CameraManager::getTranslate()

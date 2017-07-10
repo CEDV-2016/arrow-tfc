@@ -57,6 +57,8 @@ public:
   static MetaManager& getSingleton();
   static MetaManager* getSingletonPtr();
 
+  void setPlayerPosition(double x, double y, double z);
+  
 private:
   MyPhysicsManager* _physicsMgr;
   MapManager* _mapMgr;

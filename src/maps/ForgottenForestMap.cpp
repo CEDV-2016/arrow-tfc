@@ -1,4 +1,5 @@
 #include "ForgottenForestMap.hpp"
+#include "CameraManager.hpp"
 
 #include <iostream>
 
@@ -55,6 +56,9 @@ void ForgottenForestMap::create()
   Ogre::SceneNode * characters_node = _sceneMgr->createSceneNode( "ForgottenForest_Characters" );
   characters_node->attachObject( characters_entity );
   _sceneMgr->getRootSceneNode()->addChild( characters_node );
+
+  CameraManager::getSingletonPtr()->setPosition(10, 0, 0);
+
 
   TrackManager::getSingletonPtr()->load("Forgotten_Forest.ogg")->play();
 }

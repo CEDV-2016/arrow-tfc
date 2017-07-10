@@ -30,9 +30,14 @@ void MetaManager::update(Ogre::Real deltaT)
   _overlayMgr->setTime( _timer->getGameplayTime() );
 }
 
+void MetaManager::setPlayerPosition(double x, double y, double z)
+{
+  _cameraMgr->setPosition( x, y, z );
+}
+
 void MetaManager::start( std::string player_name )
 {
-  _mapMgr->changeMap( enumerations::Maps::FROZEN_ASHES, false );
+  _mapMgr->changeMap( enumerations::Maps::CITADEL, false );
   _characterMgr->loadCharacter();
 
   _overlayMgr->createHUD();

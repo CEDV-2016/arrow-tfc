@@ -1,10 +1,11 @@
 #include "CitadelMap.hpp"
+#include "CameraManager.hpp"
 
 #include <iostream>
 
 CitadelMap::CitadelMap(Ogre::SceneManager * sceneMgr, OgreBulletDynamics::DynamicsWorld * world) :
-  _sceneMgr( sceneMgr ),
-  _world( world )
+_sceneMgr( sceneMgr ),
+_world( world )
 {
 }
 
@@ -31,6 +32,12 @@ void CitadelMap::create()
   citadel_node->attachObject( citadel_entity );
   _sceneMgr->getRootSceneNode()->addChild( citadel_node );
 
+  map_file = "Cliff.mesh";
+  citadel_entity  = _sceneMgr->createEntity( map_file );
+  citadel_node = _sceneMgr->createSceneNode( "Cliff" );
+  citadel_node->attachObject( citadel_entity );
+  _sceneMgr->getRootSceneNode()->addChild( citadel_node );
+
   // Characters
   std::string characters_file = "Characters.mesh";
   Ogre::Entity * characters_entity  = _sceneMgr->createEntity( characters_file );
@@ -38,7 +45,10 @@ void CitadelMap::create()
   characters_node->attachObject( characters_entity );
   _sceneMgr->getRootSceneNode()->addChild( characters_node );
 
+  CameraManager::getSingletonPtr()->setPosition(1, 0, -5);
+
   TrackManager::getSingletonPtr()->load("Citadel.ogg")->play();
+
 }
 
 void CitadelMap::destroy()

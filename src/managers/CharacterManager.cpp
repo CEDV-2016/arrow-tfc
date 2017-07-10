@@ -15,7 +15,8 @@ void CharacterManager::loadCharacter()
 {
   _character_entity = _sceneMgr->createEntity( "Arrow", "Arrow.mesh" );
   _character_node = _sceneMgr->createSceneNode( "Arrow" );
-  _character_node->setScale( 3.5, 3.5, 3.5 );
+  _character_node->setScale( 4.5, 4.5, 4.5 );
+
   _sceneMgr->getRootSceneNode()->addChild( _character_node );
 
   _idle_state = _character_entity->getAnimationState("Idle");
@@ -69,21 +70,23 @@ void CharacterManager::idle()
 
 void CharacterManager::update(Ogre::Real deltaT)
 {
-    if (_walk_state->getEnabled() && ! _walk_state->hasEnded())
-    {
-      _walk_state->addTime( deltaT * 2.5f );
-    }
+  if (_walk_state->getEnabled() && ! _walk_state->hasEnded())
+  {
+    _walk_state->addTime( deltaT * 2.5f );
+  }
 
-    if (_shoot_state->getEnabled() && ! _shoot_state->hasEnded())
-    {
-      _shoot_state->addTime( deltaT );
-    }
+  if (_shoot_state->getEnabled() && ! _shoot_state->hasEnded())
+  {
+    _shoot_state->addTime( deltaT );
+  }
 
-    if (_idle_state->getEnabled() && ! _idle_state->hasEnded())
-    {
-      _idle_state->addTime( deltaT );
-    }
+  if (_idle_state->getEnabled() && ! _idle_state->hasEnded())
+  {
+    _idle_state->addTime( deltaT );
+  }
 }
+
+
 
 CharacterManager& CharacterManager::getSingleton()
 {

@@ -1,4 +1,5 @@
 #include "FrozenAshesMap.hpp"
+#include "CameraManager.hpp"
 
 #include <iostream>
 
@@ -49,12 +50,11 @@ void FrozenAshesMap::create()
   aux_node->attachObject( aux_entity );
   _sceneMgr->getRootSceneNode()->addChild( aux_node );
 
+  CameraManager::getSingletonPtr()->setPosition(-9.5, 0, -6.65);
+
   TrackManager::getSingletonPtr()->load("Frozen_Ashes.ogg")->play();
 }
 
 void FrozenAshesMap::destroy()
 {
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "ForgottenForest" ) );
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "ForgottenForest_Light" ) );
-  // _sceneMgr->destroySceneNode( _sceneMgr->getSceneNode( "ForgottenForest_Characters" ) );
 }
