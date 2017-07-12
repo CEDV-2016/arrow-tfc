@@ -2,6 +2,7 @@
 
 #include "PauseState.hpp"
 #include "EndState.hpp"
+#include "DialogState.hpp"
 #include "Enemy.hpp"
 #include "MapManager.hpp"
 
@@ -116,6 +117,37 @@ PlayState::keyReleased
     MapManager::getSingletonPtr()->changeMap( enumerations::Maps::FROZEN_ASHES, true );
   }
 
+  if (e.key == OIS::KC_1)
+  {
+    showDialog("intro");
+  }
+
+  if (e.key == OIS::KC_2)
+  {
+    showDialog("bonfire");
+  }
+
+  if (e.key == OIS::KC_3)
+  {
+    showDialog("castle");
+  }
+
+  if (e.key == OIS::KC_4)
+  {
+    showDialog("cave");
+  }
+
+  if (e.key == OIS::KC_5)
+  {
+    showDialog("forest");
+  }
+
+  if (e.key == OIS::KC_6)
+  {
+    showDialog("house");
+  }
+
+
   _metaMgr->keyReleased(e);
 }
 
@@ -157,6 +189,13 @@ PlayState::getSingleton ()
 void PlayState::setPlayerName(std::string name)
 {
   _game->setPlayerName( name );
+}
+
+void PlayState::showDialog(std::string dialogFile)
+{
+  DialogState* dialogState = DialogState::getSingletonPtr();
+  dialogState->setDialogue(dialogFile);
+  pushState(dialogState);
 }
 
 void PlayState::goToEndGame(bool win)

@@ -18,9 +18,8 @@ DialogManager& DialogManager::getSingleton () {
     return *msSingleton;
 }
 
-void DialogManager::newIntervention(int phase, int dialogue_cont){
-    _phase = phase;
-    _dialogue_cont = dialogue_cont;
+void DialogManager::newIntervention(std::string dialogText){
+    _dialogText = dialogText;
     _moveOut = 0;
     loadDialogue();
     chargeDialogue();
@@ -51,7 +50,7 @@ void DialogManager::hide(){
 void DialogManager::loadDialogue() {
     _data.clear();
     std::string separator = "/";
-    std::string file_name = std::string("misc") + separator + std::string("phase") + std::to_string(_phase) + std::string("-") + std::to_string(_dialogue_cont)+ std::string(".txt");
+    std::string file_name = std::string("media/dialogs") + separator + _dialogText + std::string(".txt");
     std::ifstream file(file_name);
     std::string line;
     if (file.is_open()) {
@@ -85,7 +84,6 @@ void DialogManager::initCEGUI(){
 void DialogManager::setupAnimations()
 {
   CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
-  animMgr.loadAnimationsFromXML("Animations.anims");
 
   CEGUI::Animation* botBarAnim = animMgr.getAnimation("BotBarDialogoMoveInAnimation");
   _inAnim = animMgr.instantiateAnimation(botBarAnim);

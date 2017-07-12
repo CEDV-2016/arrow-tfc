@@ -30,7 +30,7 @@ class DialogManager : public Ogre::Singleton<DialogManager>
         /// Initializes variables and necessary methods to load a new dialogue
         void chargeDialogue();
         /// Loads the next intervention of a dialogue
-        void newIntervention(int phase, int dialogue_cont);
+        void newIntervention(std::string dialogText);
         /// Speeds the apparition of a message
         void passMessage();
         /// Reset state variables
@@ -47,6 +47,7 @@ class DialogManager : public Ogre::Singleton<DialogManager>
         std::string _text;
 
         int _dialogue_cont, _phase, _moveOut;
+        std::string _dialogText;
 
         float _timeSinceStart;
         /// Seconds to wait for the first message

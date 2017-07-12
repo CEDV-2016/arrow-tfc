@@ -117,11 +117,18 @@
             <KeyFrame position="2.0" progression="linear" value="{{0, 212}, {0, 464}}" />
         </Affector>
     </AnimationDefinition>
+    <AnimationDefinition autoStart="false" duration="3.0" name="BotBarDialogoMoveInAnimation" replayMode="once">
+        <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
+            <KeyFrame position="0.5" progression="linear" value="{{0, 0}, {0.4, 0}}" />
+            <KeyFrame position="2.15" progression="quadratic decelerating" value="{{0, 0}, {0, 0}}" />
+            <KeyFrame position="2.27" progression="linear" value="{{0, 0}, {0, 0}}" />
+        </Affector>
+    </AnimationDefinition>
     <AnimationDefinition autoStart="false" duration="7.0" name="BotBarDialogoMoveOutAnimation" replayMode="once">
         <Affector applicationMethod="absolute" interpolator="UVector2" property="Position">
             <KeyFrame position="0.5" progression="linear" value="{{0, 0}, {0, 0}}" />
-            <KeyFrame position="6.15" progression="quadratic decelerating" value="{{0, 0}, {0.4, 0}}" />
-            <KeyFrame position="6.27" progression="linear" value="{{0, 0}, {0.4, 0}}" />
+            <KeyFrame position="2.15" progression="quadratic decelerating" value="{{0, 0}, {0.4, 0}}" />
+            <KeyFrame position="2.27" progression="linear" value="{{0, 0}, {0.4, 0}}" />
         </Affector>
     </AnimationDefinition>
     <AnimationDefinition autoStart="false" duration="2.0" name="TopBarMoveInAnimation" replayMode="once">

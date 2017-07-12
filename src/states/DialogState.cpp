@@ -27,7 +27,7 @@ void DialogState::enter () {
     _sceneMgr = _root->getSceneManager("SceneManager");
     _camera = _sceneMgr->getCamera("MainCamera");
     _dialogueMgr = DialogManager::getSingletonPtr();
-    _dialogueMgr->newIntervention(_phase, _dialogue);
+    _dialogueMgr->newIntervention(_dialogText);
 }
 
 void DialogState::exit () {

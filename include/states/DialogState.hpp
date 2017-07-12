@@ -40,7 +40,7 @@ public:
     virtual bool frameEnded (const Ogre::FrameEvent &e);
 
     /// This method sets the value of phase and dialogue
-    void setDialogue(int phase, int dialogue) { _phase = phase; _dialogue = dialogue; };
+    void setDialogue(std::string dialogText) { _dialogText = dialogText; };
 
 
 
@@ -55,6 +55,7 @@ private:
     bool _exit;
     /// Variables that indicate number of phase and dialogue, in order to load the right message
     int _phase, _dialogue;
+    std::string _dialogText;
     /// This variable indicates the action to be performed according to the number of clics
     int _clic;
 
