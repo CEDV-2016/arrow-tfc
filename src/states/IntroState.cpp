@@ -155,6 +155,9 @@ void IntroState::createGUI()
     //Config Buttons
     _btNext = _intro->getChild("ContinueText");
     _btNext->hide();
+
+    CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
+    animMgr.loadAnimationsFromXML("Menu.anims");
   }
   else
   {
@@ -168,7 +171,6 @@ void IntroState::createGUI()
 void IntroState::setupAnimations()
 {
   CEGUI::AnimationManager& animMgr = CEGUI::AnimationManager::getSingleton();
-  animMgr.loadAnimationsFromXML("Menu.anims");
 
   CEGUI::Animation* fadeAnim = animMgr.getAnimation("AlphaIconIn");
   CEGUI::AnimationInstance* fadeAnimInstance = animMgr.instantiateAnimation(fadeAnim);
